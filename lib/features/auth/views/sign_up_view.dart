@@ -1,29 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:fruit_app/core/components/custom_elevated_button.dart';
-import 'package:fruit_app/core/components/custom_text_form_field.dart';
+import 'package:flutter_signin_button/button_list.dart';
+import 'package:flutter_signin_button/button_view.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:fruit_app/core/components/custom_text_button.dart';
 import 'package:fruit_app/core/utils/app_colors.dart';
 import 'package:fruit_app/core/utils/app_size.dart';
+import 'package:fruit_app/features/auth/views/login_view.dart';
+import 'package:fruit_app/features/auth/views/sign_up_with_phone_view.dart';
+import 'package:fruit_app/features/auth/views/widgets/custom_sign_in_elevation_button.dart';
 
-class SignUpView extends StatefulWidget {
+class SignUpView extends StatelessWidget {
   const SignUpView({super.key});
-
-  @override
-  State<SignUpView> createState() => _SignUpViewState();
-}
-
-class _SignUpViewState extends State<SignUpView> {
-  TextEditingController fullNameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(),
-      body: Center(
-        child: SingleChildScrollView(
+      body: SafeArea(
+        child: Center(
           child: Padding(
-            padding: const EdgeInsets.all(kDefPadding),
+            padding: const EdgeInsets.all(kDefAuthPadding),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
                   'Fruit Market',
@@ -35,49 +34,62 @@ class _SignUpViewState extends State<SignUpView> {
                 ),
                 SizedBox(height: 15),
                 Text(
-                  'Sign Up to Wikala',
+                  'Welcome to Our app',
                   style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10),
-                CustomTextFormField(
-                  controller: fullNameController,
-                  text: 'Full Name *',
-                  labelText: 'First and Last Name',
-                  validator: (String? p1) {
-                    return null;
+                SizedBox(height: 20),
+                CustomSignInElevationButton(
+                  text: 'Sign in with Phone Number',
+                  color: Colors.white,
+                  icon: Icons.phone,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SignUpWithPhoneView(),
+                      ),
+                    );
                   },
-                  keyboardType: TextInputType.text,
+                  textColor: Color(0xff7e7e7e),
+                  iconColor: Color(0xff242729),
                 ),
                 SizedBox(height: 10),
-                CustomTextFormField(
-                  controller: passwordController,
-                  text: 'Phone Number With Whatsapp *',
-                  labelText: 'Mobile Number',
-                  validator: (String? p1) {
-                    return null;
-                  },
-                  keyboardType: TextInputType.number,
+
+                SizedBox(
+                  height: 50,
+                  child: SignInButton(
+                    width: MediaQuery.of(context).size.width,
+                    Buttons.Google,
+
+                    onPressed: () {},
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadiusGeometry.circular(25),
+                    ),
+                  ),
                 ),
                 SizedBox(height: 10),
-                CustomTextFormField(
-                  obscureText: true,
-                  controller: passwordController,
-                  text: 'Password *',
-                  labelText: 'Password',
-                  validator: (String? p1) {
-                    return null;
-                  },
-                  keyboardType: TextInputType.text,
+
+                CustomSignInElevationButton(
+                  text: 'Sign in with Facebook',
+                  color: Color(0xff235C95),
+                  icon: FontAwesomeIcons.facebook,
+                  onPressed: () {},
+                  textColor: Colors.white,
+                  iconColor: Colors.white,
                 ),
-                SizedBox(height: 10),
-                CustomElevatedButton(onPressed: () {}, text: 'Sign Up'),
                 SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Already have an account?|'),
-                    Text('Login', style: TextStyle(color: kTextButtonColor)),
+                    Text('Already member?', style: TextStyle(fontSize: 15)),
+                    CustomTextButton(text: 'Login', destination: LoginView()),
                   ],
+                ),
+
+                Text(
+                  'By signing in you are agreeing to our Terms and Conditions',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 14),
                 ),
               ],
             ),

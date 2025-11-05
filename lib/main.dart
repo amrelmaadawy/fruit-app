@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:fruit_app/features/onboarding/views/onboarding_view.dart';
+import 'package:fruit_app/features/splash/views/splash_view.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final prefs = await SharedPreferences.getInstance();
+  prefs.getBool('showHome') ?? false;
+
   runApp(const MyApp());
 }
 
@@ -13,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(fontFamily: 'Poppins'),
       debugShowCheckedModeBanner: false,
-      home: OnboardingView(),
+      home: SplashView(),
     );
   }
 }

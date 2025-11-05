@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/utils/app_colors.dart';
+import 'package:fruit_app/core/utils/app_size.dart';
+import 'package:fruit_app/features/auth/views/sign_up_view.dart';
+import 'package:fruit_app/features/onboarding/views/widgets/custom_page_builder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -22,124 +25,129 @@ class _OnboardingViewState extends State<OnboardingView> {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-
     return Scaffold(
       appBar: AppBar(),
       body: SafeArea(
-        child: Column(
-          children: [
-            // Skip button at top right
-            Align(
-              alignment: Alignment.topRight,
-              child: TextButton(
-                onPressed: () async {
-                  // final prefs = await SharedPreferences.getInstance();
-                  // prefs.setBool('showHome', true);
-                  // Navigate to home or next screen
-                },
-                child: const Text('Skip', style: TextStyle(fontSize: 16)),
+        child: Padding(
+          padding: const EdgeInsets.all(kDefAuthPadding),
+          child: Column(
+            children: [
+              Align(
+                alignment: Alignment.topRight,
+                child: TextButton(
+                  onPressed: () async {
+                    final prefs = await SharedPreferences.getInstance();
+                    prefs.setBool('showHome', true);
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignUpView()),
+                    );
+                  },
+                  child: const Text(
+                    'Skip',
+                    style: TextStyle(fontSize: 16, color: kBorderColor),
+                  ),
+                ),
               ),
-            ),
 
-            // PageView content
-            Expanded(
-              flex: 7,
-              child: PageView(
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.5,
+                child: PageView(
+                  controller: pageController,
+                  onPageChanged: (index) {
+                    setState(() {
+                      isLastPage = index == 2;
+                    });
+                  },
+                  children: [
+                    CustomPageBuilder(
+                      title: 'E Shopping',
+                      subTitle: 'Explore op organic fruits & grab them',
+                    ),
+                    CustomPageBuilder(
+                      title: 'Delivery Arrived',
+                      subTitle: 'Order is arrived at your Place',
+                    ),
+                    CustomPageBuilder(
+                      title: 'Delivery Arrived',
+                      subTitle: 'Order is arrived at your Place',
+                    ),
+                  ],
+                ),
+              ),
+
+              SmoothPageIndicator(
                 controller: pageController,
-                onPageChanged: (index) {
-                  setState(() {
-                    isLastPage = index == 2;
-                  });
-                },
-                children: [
-                  Center(
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.7,
-                          child: Image.asset('assets/images/onboarding.png'),
-                        ),
-                        Text(
-                          'E Shopping',
-                          style: TextStyle(
-                            color: Color(0xff2F2E41),
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          'Explore op organic fruits & grab them',
-                          style: TextStyle(
-                            color: Color(0xff78787C),
-                            fontSize: 17,
-                          ),
-                        ),
-                      ],
+                count: 3,
+                effect: CustomizableEffect(
+                  activeDotDecoration: DotDecoration(
+                    width: 14,
+                    height: 14,
+                    color: kPrimaryColor,
+                    borderRadius: BorderRadius.circular(kDefBorderRaduis),
+                    dotBorder: DotBorder(
+                      color: kActiveDotBorderColor,
+                      width: 1.5,
                     ),
                   ),
-                  Center(child: Text('Onboarding 2')),
-                  Center(child: Text('Onboarding 3')),
-                ],
+                  dotDecoration: DotDecoration(
+                    width: 14,
+                    height: 14,
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(kDefBorderRaduis),
+                    dotBorder: DotBorder(color: kPrimaryColor, width: 1.5),
+                  ),
+                  spacing: 10.0,
+                ),
               ),
-            ),
-
-            // Smooth Indicator directly under the PageView
-            SmoothPageIndicator(
-              controller: pageController,
-              count: 3,
-              effect: WormEffect(
-                spacing: 16,
-                dotColor: Colors.grey,
-                activeDotColor: isDark ? Colors.white : Colors.black,
-              ),
-              onDotClicked: (index) => pageController.animateToPage(
-                index,
-                duration: const Duration(milliseconds: 500),
-                curve: Curves.easeIn,
-              ),
-            ),
-
-            const SizedBox(height: 20),
-
-            isLastPage
-                ? Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () async {
-                          final prefs = await SharedPreferences.getInstance();
-                          prefs.setBool('showHome', true);
-                        },
-                        child: Text(
-                          'Get Started',
-                          style: TextStyle(
-                            color: isDark ? Colors.black : Colors.white,
-                            fontWeight: FontWeight.bold,
+              SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+              isLastPage
+                  ? Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.5,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: kPrimaryColor,
+                          ),
+                          onPressed: () async {
+                            final prefs = await SharedPreferences.getInstance();
+                            prefs.setBool('showHome', true);
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SignUpView(),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            'Get Started',
+                            style: TextStyle(fontSize: 16, color: Colors.white),
                           ),
                         ),
                       ),
-                    ),
-                  )
-                : ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: kPrimaryColor,
-                    ),
-                    onPressed: () {
-                      pageController.nextPage(
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.easeInOut,
-                      );
-                    },
-                    child: const Text(
-                      'Next',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
+                    )
+                  : SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.5,
 
-            const SizedBox(height: 30),
-          ],
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: kPrimaryColor,
+                        ),
+                        onPressed: () {
+                          pageController.nextPage(
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.easeInOut,
+                          );
+                        },
+                        child: const Text(
+                          'Next',
+                          style: TextStyle(color: Colors.white, fontSize: 16),
+                        ),
+                      ),
+                    ),
+            ],
+          ),
         ),
       ),
     );

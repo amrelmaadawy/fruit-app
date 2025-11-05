@@ -24,7 +24,7 @@ class CustomSignInElevationButton extends StatelessWidget {
 
       onPressed: onPressed,
       child: Padding(
-        padding: const EdgeInsets.all(kDefPadding),
+        padding: const EdgeInsets.all(kDefItemsPadding),
         child: Row(
           children: [
             Icon(icon, color: iconColor, size: 20),

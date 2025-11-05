@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/utils/app_colors.dart';
-import 'package:fruit_app/features/auth/views/sign_up_view.dart';
+import 'package:fruit_app/features/onboarding/views/onboarding_view.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -18,7 +18,6 @@ class _SplashViewState extends State<SplashView>
   void initState() {
     super.initState();
 
-    // Animation for images
     _controller = AnimationController(
       duration: const Duration(seconds: 2),
       vsync: this,
@@ -41,7 +40,7 @@ class _SplashViewState extends State<SplashView>
 
   Route _createRoute() {
     return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => SignUpView(),
+      pageBuilder: (context, animation, secondaryAnimation) => OnboardingView(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         const begin = Offset(1.0, 0.0); 
         const end = Offset.zero;
