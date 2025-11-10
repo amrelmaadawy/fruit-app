@@ -8,3 +8,5 @@ const kSubTextColor = Color(0xff858D9A);
 const kActiveDotBorderColor = Color(0xff68A039);
 const kOpenGreenColor = Color(0xff00BB1A);
 const kFoodNameColor = Color(0xff51949F);
+const kBlackColor = Color(0xff292727);
+const kOfferColor = Color(0xffDF958F);
