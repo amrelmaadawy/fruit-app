@@ -1,15 +1,17 @@
+
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/utils/app_colors.dart';
 import 'package:fruit_app/core/utils/app_size.dart';
-import 'package:fruit_app/features/home/views/product_item_view.dart';
 
-class ProductItemCard extends StatelessWidget {
-  const ProductItemCard({super.key});
+class BasketProductItem extends StatelessWidget {
+  const BasketProductItem({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.12,
+      height: MediaQuery.of(context).size.height * 0.15,
       child: Card(
         color: Colors.white,
         elevation: 2,
@@ -38,7 +40,10 @@ class ProductItemCard extends StatelessWidget {
                 children: [
                   Text(
                     'Product Name',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   Row(
                     children: [
@@ -46,7 +51,9 @@ class ProductItemCard extends StatelessWidget {
                         '12.00 KD',
                         style: TextStyle(fontSize: 14, color: kBorderColor),
                       ),
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.05),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.05,
+                      ),
                       Text(
                         '14.00 KD',
                         style: TextStyle(
@@ -74,22 +81,32 @@ class ProductItemCard extends StatelessWidget {
                 ],
               ),
               Spacer(),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ProductItemView()),
-                  );
-                },
-                child: CircleAvatar(
-                  radius: MediaQuery.of(context).size.width * 0.06,
-                  backgroundColor: kPrimaryColor,
-                  child: Icon(
-                    size: 25,
-                    Icons.add_shopping_cart_outlined,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Icon(Icons.delete_forever_outlined, size: 30),
+    
+                  Card(
                     color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadiusGeometry.circular(
+                        kDefBorderRaduis,
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.remove),
+                        ),
+                        Text('2'),
+                        IconButton(onPressed: () {}, icon: Icon(Icons.add)),
+                      ],
+                    ),
                   ),
-                ),
+                ],
               ),
             ],
           ),
