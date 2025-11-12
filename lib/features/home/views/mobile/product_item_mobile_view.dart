@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/utils/app_colors.dart';
 import 'package:fruit_app/core/utils/app_size.dart';
+import 'package:fruit_app/features/home/views/widgets/custom_select_weight_row.dart';
 
 class ProductItemMobileView extends StatefulWidget {
   const ProductItemMobileView({super.key});
@@ -127,36 +128,13 @@ class _ProductItemMobileViewState extends State<ProductItemMobileView> {
                 ),
               ),
 
-              GestureDetector(
+              CustomSelectWeightRow(
                 onTap: () {
                   setState(() {
                     isWeightAppered = !isWeightAppered;
                   });
                 },
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadiusGeometry.circular(
-                      kDefBorderRaduis,
-                    ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Select Weight',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: kBlackColor,
-                          ),
-                        ),
-                        Icon(Icons.expand_more_outlined),
-                      ],
-                    ),
-                  ),
-                ),
+                title: 'Select Weight',
               ),
               isWeightAppered
                   ? RadioGroup<String>(
@@ -203,36 +181,13 @@ class _ProductItemMobileViewState extends State<ProductItemMobileView> {
                     )
                   : SizedBox(),
 
-              GestureDetector(
+              CustomSelectWeightRow(
                 onTap: () {
                   setState(() {
                     isAddonsAppered = !isAddonsAppered;
                   });
                 },
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadiusGeometry.circular(
-                      kDefBorderRaduis,
-                    ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Select Addons',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: kBlackColor,
-                          ),
-                        ),
-                        Icon(Icons.expand_more_outlined),
-                      ],
-                    ),
-                  ),
-                ),
+                title: 'Select Addons',
               ),
               isAddonsAppered
                   ? RadioGroup<String>(
