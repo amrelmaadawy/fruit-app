@@ -23,9 +23,10 @@ class _SplashViewState extends State<SplashView>
       vsync: this,
     )..forward();
 
-    _fadeInAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeIn),
-    );
+    _fadeInAnimation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeIn));
 
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(context, _createRoute());
@@ -40,13 +41,17 @@ class _SplashViewState extends State<SplashView>
 
   Route _createRoute() {
     return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => OnboardingView(),
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          const OnboardingView(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        const begin = Offset(1.0, 0.0); 
+        const begin = Offset(1.0, 0.0);
         const end = Offset.zero;
         const curve = Curves.ease;
 
-        var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+        var tween = Tween(
+          begin: begin,
+          end: end,
+        ).chain(CurveTween(curve: curve));
         var fadeTween = Tween(begin: 0.0, end: 1.0);
 
         return FadeTransition(
@@ -62,21 +67,41 @@ class _SplashViewState extends State<SplashView>
 
   @override
   Widget build(BuildContext context) {
+    final media = MediaQuery.of(context);
+    final height = media.size.height;
+    final width = media.size.width;
+
     return Scaffold(
       backgroundColor: kSplashBackGroundColor,
-      body: Column(
-        children: [
-          SizedBox(height: MediaQuery.of(context).size.height * 0.3),
-          FadeTransition(
-            opacity: _fadeInAnimation,
-            child: Image.asset('assets/images/fruit_market.png'),
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            children: [
+              SizedBox(height: height * 0.2),
+              FadeTransition(
+                opacity: _fadeInAnimation,
+                child: Image.asset(
+                  'assets/images/fruit_market.png',
+                  width:
+                      width*0.9,
+                  fit: BoxFit.contain,
+                ),
+              ),
+              const Spacer(),
+              FadeTransition(
+                opacity: _fadeInAnimation,
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(maxWidth: 600, minWidth: 100),
+                  child: Image.asset(
+                    'assets/images/343434 1.png',
+                    width: width,
+                    fit: BoxFit.contain,
+                  ),
+                ),
+              ),
+            ],
           ),
-          const Spacer(),
-          FadeTransition(
-            opacity: _fadeInAnimation,
-            child: Image.asset('assets/images/343434 1.png'),
-          ),
-        ],
+        ),
       ),
     );
   }

@@ -8,115 +8,114 @@ import 'package:fruit_app/core/utils/app_size.dart';
 import 'package:fruit_app/features/auth/views/login_view.dart';
 import 'package:fruit_app/features/auth/views/mobile/widgets/custom_sign_in_elevation_button.dart';
 import 'package:fruit_app/features/auth/views/sign_up_with_phone_view.dart';
-
 class SignUpMobileView extends StatelessWidget {
   const SignUpMobileView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(),
       body: SafeArea(
-        child: Column(
-          children: [
-            Center(
-              child: Container(
-                width: MediaQuery.of(context).size.width * 0.9,
-                padding: const EdgeInsets.all(kDefAuthPadding),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Fruit Market',
-                      style: TextStyle(
-                        color: kPrimaryColor,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 42,
-                      ),
+        child: SingleChildScrollView(
+          child: Center(
+            child: Container(
+              width: screenWidth * 0.9,
+              padding: const EdgeInsets.all(kDefAuthPadding),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(height: screenHeight * 0.05),
+
+                  Text(
+                    'Fruit Market',
+                    style: TextStyle(
+                      color: kPrimaryColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: screenWidth * 0.1, 
                     ),
+                  ),
+                  SizedBox(height: screenHeight * 0.02),
 
-                    SizedBox(height: 10),
-
-                    Text(
-                      'Welcome to Our app',
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  Text(
+                    'Welcome to Our app',
+                    style: TextStyle(
+                      fontSize: screenWidth * 0.06, 
+                      fontWeight: FontWeight.bold,
                     ),
+                  ),
+                  SizedBox(height: screenHeight * 0.03),
 
-                    SizedBox(height: 20),
-
-                    CustomSignInElevationButton(
-                      text: 'Sign in with Phone',
-                      color: Colors.white,
-                      icon: Icons.phone,
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => SignUpWithPhoneView(),
-                          ),
-                        );
-                      },
-                      textColor: const Color(0xff7e7e7e),
-                      iconColor: const Color(0xff242729),
-                    ),
-
-                    SizedBox(height: 10),
-
-                    SizedBox(
-                      height: 50,
-                      child: SignInButton(
-                        width: MediaQuery.of(context).size.width,
-                        Buttons.Google,
-                        onPressed: () {},
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25),
+                  CustomSignInElevationButton(
+                    text: 'Sign in with Phone',
+                    color: Colors.white,
+                    icon: Icons.phone,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SignUpWithPhoneView(),
                         ),
-                      ),
-                    ),
+                      );
+                    },
+                    textColor: const Color(0xff7e7e7e),
+                    iconColor: const Color(0xff242729),
+                  ),
+                  SizedBox(height: screenHeight * 0.02),
 
-                    SizedBox(height: 10),
-
-                    CustomSignInElevationButton(
-                      text: 'Sign in with Facebook',
-                      color: const Color(0xff235C95),
-                      icon: FontAwesomeIcons.facebook,
+                  SizedBox(
+                    height: screenHeight * 0.06,
+                    width: double.infinity,
+                    child: SignInButton(
+                      Buttons.Google,
                       onPressed: () {},
-                      textColor: Colors.white,
-                      iconColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25),
+                      ),
                     ),
+                  ),
+                  SizedBox(height: screenHeight * 0.02),
 
-                    SizedBox(height: 10),
+                  CustomSignInElevationButton(
+                    text: 'Sign in with Facebook',
+                    color: const Color(0xff235C95),
+                    icon: FontAwesomeIcons.facebook,
+                    onPressed: () {},
+                    textColor: Colors.white,
+                    iconColor: Colors.white,
+                  ),
+                  SizedBox(height: screenHeight * 0.03),
 
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          'Already member?',
-                          style: TextStyle(fontSize: 15),
-                        ),
-                        CustomTextButton(
-                          text: 'Login',
-                          destination: LoginView(),
-                        ),
-                      ],
-                    ),
+                  // Login text
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        'Already member?',
+                        style: TextStyle(fontSize: 15),
+                      ),
+                      CustomTextButton(
+                        text: 'Login',
+                        destination: LoginView(),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: screenHeight * 0.02),
 
-                    SizedBox(height: 15),
-
-                    Text(
-                      'By signing in you are agreeing to our Terms and Conditions',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 13),
-                    ),
-                  ],
-                ),
+                  // Terms
+                  Text(
+                    'By signing in you are agreeing to our Terms and Conditions',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 13),
+                  ),
+                  SizedBox(height: screenHeight * 0.05),
+                ],
               ),
             ),
-          ],
+          ),
         ),
       ),
     );
