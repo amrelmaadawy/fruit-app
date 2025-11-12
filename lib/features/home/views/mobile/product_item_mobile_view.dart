@@ -12,6 +12,9 @@ class ProductItemMobileView extends StatefulWidget {
 class _ProductItemMobileViewState extends State<ProductItemMobileView> {
   bool isWeightAppered = false;
   bool isAddonsAppered = false;
+  String? selectedWeight = '50g';
+  String? selectedAddons = '50g';
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -52,43 +55,42 @@ class _ProductItemMobileViewState extends State<ProductItemMobileView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Stack(
-                children: [
-                  Image.asset('assets/images/productNameCover.png'),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 5),
+                child: Stack(
+                  children: [
+                    Image.asset('assets/images/productNameCover.png'),
 
-                  Positioned(
-                    right: 14,
-                    top: 14,
-                    child: Container(
-                      padding: EdgeInsets.only(right: 13, left: 13),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(kDefBorderRaduis),
-                      ),
-                      child: Text(
-                        '10% Off Discount',
-                        style: TextStyle(color: kBorderColor, fontSize: 17),
+                    Positioned(
+                      right: 14,
+                      top: 14,
+                      child: Container(
+                        padding: EdgeInsets.only(right: 13, left: 13),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(kDefBorderRaduis),
+                        ),
+                        child: Text(
+                          '10% Off Discount',
+                          style: TextStyle(color: kBorderColor, fontSize: 17),
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              Expanded(
-                flex: 1,
-                child: Text(
-                  'Category Name',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: kPrimaryColor,
-                  ),
+                  ],
                 ),
               ),
-              Expanded(
-                flex: 1,
-                child: Row(
-                  children: [
-                    Text(
+              Text(
+                'Category Name',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: kPrimaryColor,
+                ),
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
                       'Product Name',
                       style: TextStyle(
                         fontSize: 22,
@@ -96,121 +98,171 @@ class _ProductItemMobileViewState extends State<ProductItemMobileView> {
                         color: kBlackColor,
                       ),
                     ),
-                    Spacer(),
-                    Text(
-                      'KD12.00 ',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: kBorderColor,
-                      ),
+                  ),
+
+                  Text(
+                    'KD12.00 ',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: kBorderColor,
                     ),
-                    Text(
-                      ' KD14.00',
-                      style: TextStyle(fontSize: 17, color: kOfferColor),
-                    ),
-                  ],
-                ),
+                  ),
+                  Text(
+                    ' KD14.00',
+                    style: TextStyle(fontSize: 17, color: kOfferColor),
+                  ),
+                ],
               ),
 
-              Expanded(
-                child: Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
-                  style: TextStyle(fontSize: 16, color: kBorderColor),
-                ),
+              Text(
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+                style: TextStyle(fontSize: 16, color: kBorderColor),
               ),
-              Expanded(
+              Padding(
+                padding: const EdgeInsets.only(top: 5, bottom: 5),
                 child: Text(
                   'Sell Per : Kartoon',
                   style: TextStyle(fontSize: 16, color: kBorderColor),
                 ),
               ),
 
-              Expanded(
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isWeightAppered = !isWeightAppered;
+                  });
+                },
                 child: Card(
-                  shape: RoundedRectangleBorder(),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Select Weight',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: kBlackColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusGeometry.circular(
+                      kDefBorderRaduis,
+                    ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Select Weight',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: kBlackColor,
+                          ),
                         ),
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          setState(() {
-                            isWeightAppered = !isWeightAppered;
-                          });
-                        },
-                        icon: Icon(Icons.expand_more_outlined),
-                      ),
-                    ],
+                        Icon(Icons.expand_more_outlined),
+                      ],
+                    ),
                   ),
                 ),
               ),
               isWeightAppered
-                  ? Expanded(
+                  ? RadioGroup<String>(
+                      onChanged: (value) {
+                        setState(() {
+                          selectedWeight = value;
+                        });
+                      },
+                      groupValue: selectedWeight,
                       child: Column(
                         children: [
-                          Text(
-                            '50 Gram-4.00 KD',
-                            style: TextStyle(fontSize: 17, color: kBorderColor),
+                          RadioMenuButton<String>(
+                            value: '50g',
+                            groupValue: selectedWeight,
+                            onChanged: (String? value) {
+                              setState(() {
+                                selectedWeight = value;
+                              });
+                            },
+                            child: Text('50 Gram - 4.00 KD'),
                           ),
-                          Text(
-                            '50 Gram-4.00 KD',
-                            style: TextStyle(fontSize: 17, color: kBorderColor),
+                          RadioMenuButton<String>(
+                            value: '100g',
+                            groupValue: selectedWeight,
+                            onChanged: (String? value) {
+                              setState(() {
+                                selectedWeight = value;
+                              });
+                            },
+                            child: Text('100 Gram - 7.50 KD'),
                           ),
-                          Text(
-                            '50 Gram-4.00 KD',
-                            style: TextStyle(fontSize: 17, color: kBorderColor),
+                          RadioMenuButton<String>(
+                            value: '200g',
+                            groupValue: selectedWeight,
+                            onChanged: (String? value) {
+                              setState(() {
+                                selectedWeight = value;
+                              });
+                            },
+                            child: Text('200 Gram - 7.50 KD'),
                           ),
                         ],
                       ),
                     )
                   : SizedBox(),
 
-              Expanded(
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isAddonsAppered = !isAddonsAppered;
+                  });
+                },
                 child: Card(
-                  shape: RoundedRectangleBorder(),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Select Addons',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: kBlackColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusGeometry.circular(
+                      kDefBorderRaduis,
+                    ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Select Addons',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: kBlackColor,
+                          ),
                         ),
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          setState(() {
-                            isAddonsAppered = !isAddonsAppered;
-                          });
-                        },
-                        icon: Icon(Icons.expand_more_outlined),
-                      ),
-                    ],
+                        Icon(Icons.expand_more_outlined),
+                      ],
+                    ),
                   ),
                 ),
               ),
               isAddonsAppered
-                  ? Expanded(
-                      flex: 1,
+                  ? RadioGroup<String>(
+                      onChanged: (value) {
+                        setState(() {
+                          selectedAddons = value;
+                        });
+                      },
+                      groupValue: selectedAddons,
                       child: Column(
                         children: [
-                          Text(
-                            '50 Gram-4.00 KD',
-                            style: TextStyle(fontSize: 17, color: kBorderColor),
+                          RadioMenuButton<String>(
+                            value: '50g',
+                            groupValue: selectedAddons,
+                            onChanged: (String? value) {
+                              setState(() {
+                                selectedAddons = value;
+                              });
+                            },
+                            child: Text('50 Gram - 4.00 KD'),
                           ),
-                          Text(
-                            '50 Gram-4.00 KD',
-                            style: TextStyle(fontSize: 17, color: kBorderColor),
+                          RadioMenuButton<String>(
+                            value: '100g',
+                            groupValue: selectedAddons,
+                            onChanged: (String? value) {
+                              setState(() {
+                                selectedAddons = value;
+                              });
+                            },
+                            child: Text('100 Gram - 7.50 KD'),
                           ),
                         ],
                       ),
