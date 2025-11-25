@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_app/core/responsive/size_config.dart';
 import 'package:fruit_app/core/utils/app_size.dart';
 
 class CustomSignInElevationButton extends StatelessWidget {
@@ -7,7 +8,7 @@ class CustomSignInElevationButton extends StatelessWidget {
     required this.text,
     required this.color,
     required this.onPressed,
-    required this.icon,
+    required this.widget,
     required this.textColor,
     this.iconColor,
   });
@@ -16,9 +17,11 @@ class CustomSignInElevationButton extends StatelessWidget {
   final Color textColor;
   final Color? iconColor;
   final void Function() onPressed;
-  final IconData icon;
+  final Widget widget;
   @override
   Widget build(BuildContext context) {
+        bool isWeb = MediaQuery.of(context).size.width >= 1024;
+
     return ElevatedButton(
       style: ElevatedButton.styleFrom(elevation: 2, backgroundColor: color),
 
@@ -27,9 +30,12 @@ class CustomSignInElevationButton extends StatelessWidget {
         padding: const EdgeInsets.all(kDefHomePadding),
         child: Row(
           children: [
-            Icon(icon, color: iconColor, size: 20),
-            SizedBox(width: 10),
-            Text(text, style: TextStyle(fontSize: 15, color: textColor)),
+            SizedBox(child: widget,),
+            SizedBox(width:isWeb?22: 3.w),
+            Text(
+              text,
+              style: TextStyle(fontSize: isWeb?22:3.sp, color: textColor),
+            ),
           ],
         ),
       ),

@@ -1,58 +1,60 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_signin_button/button_list.dart';
-import 'package:flutter_signin_button/button_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruit_app/core/components/custom_text_button.dart';
+import 'package:fruit_app/core/responsive/size_config.dart';
 import 'package:fruit_app/core/utils/app_colors.dart';
 import 'package:fruit_app/core/utils/app_size.dart';
 import 'package:fruit_app/features/auth/views/login_view.dart';
 import 'package:fruit_app/features/auth/views/mobile/widgets/custom_sign_in_elevation_button.dart';
 import 'package:fruit_app/features/auth/views/sign_up_with_phone_view.dart';
+
 class SignUpMobileView extends StatelessWidget {
   const SignUpMobileView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
+    bool isWeb = MediaQuery.of(context).size.width >= 1024;
 
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Center(
+        child: Center(
+          child: SingleChildScrollView(
             child: Container(
-              width: screenWidth * 0.9,
-              padding: const EdgeInsets.all(kDefAuthPadding),
+              width: isWeb ? 600 : 90.w,  
+              padding: EdgeInsets.all(isWeb ? 32 : kDefAuthPadding),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(height: screenHeight * 0.05),
+
+                  SizedBox(height: isWeb ? 40 : 5.h),
 
                   Text(
                     'Fruit Market',
                     style: TextStyle(
                       color: kPrimaryColor,
                       fontWeight: FontWeight.bold,
-                      fontSize: screenWidth * 0.1, 
+                      fontSize: isWeb ? 28 : 10.sp,
                     ),
                   ),
-                  SizedBox(height: screenHeight * 0.02),
+
+                  SizedBox(height: isWeb ? 10 : 2.h),
 
                   Text(
                     'Welcome to Our app',
                     style: TextStyle(
-                      fontSize: screenWidth * 0.06, 
+                      fontSize: isWeb ? 32 : 6.w,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: screenHeight * 0.03),
+
+                  SizedBox(height: isWeb ? 40 : 3.h),
 
                   CustomSignInElevationButton(
                     text: 'Sign in with Phone',
                     color: Colors.white,
-                    icon: Icons.phone,
+                    widget: Icon(Icons.phone, size: isWeb ? 22 : 3.sp),
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -64,54 +66,61 @@ class SignUpMobileView extends StatelessWidget {
                     textColor: const Color(0xff7e7e7e),
                     iconColor: const Color(0xff242729),
                   ),
-                  SizedBox(height: screenHeight * 0.02),
 
-                  SizedBox(
-                    height: screenHeight * 0.06,
-                    width: double.infinity,
-                    child: SignInButton(
-                      Buttons.Google,
-                      onPressed: () {},
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25),
-                      ),
+                  SizedBox(height: isWeb ? 20 : 2.h),
+
+                  CustomSignInElevationButton(
+                    text: 'Sign in with Google',
+                    color: Colors.white,
+                    widget: Image.asset(
+                      'assets/images/google logo.png',
+                      width: isWeb ? 22 : 3.w,
+                      height: isWeb ? 22 : 3.w,
                     ),
+                    onPressed: () {},
+                    textColor: const Color(0xff7e7e7e),
+                    iconColor: const Color(0xff242729),
                   ),
-                  SizedBox(height: screenHeight * 0.02),
+
+                  SizedBox(height: isWeb ? 20 : 2.h),
 
                   CustomSignInElevationButton(
                     text: 'Sign in with Facebook',
                     color: const Color(0xff235C95),
-                    icon: FontAwesomeIcons.facebook,
+                    widget: Icon(
+                      FontAwesomeIcons.facebook,
+                      color: Colors.white,
+                      size: isWeb ? 22 : 3.sp,
+                    ),
                     onPressed: () {},
                     textColor: Colors.white,
                     iconColor: Colors.white,
                   ),
-                  SizedBox(height: screenHeight * 0.03),
 
-                  // Login text
+                  SizedBox(height: isWeb ? 30 : 3.h),
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
+                      Text(
                         'Already member?',
-                        style: TextStyle(fontSize: 15),
+                        style: TextStyle(fontSize: isWeb ? 18 : 4.sp),
                       ),
-                      CustomTextButton(
-                        text: 'Login',
-                        destination: LoginView(),
-                      ),
+                      CustomTextButton(text: 'Login', destination: LoginView()),
                     ],
                   ),
-                  SizedBox(height: screenHeight * 0.02),
 
-                  // Terms
+                  SizedBox(height: isWeb ? 20 : 2.h),
+
                   Text(
                     'By signing in you are agreeing to our Terms and Conditions',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 13),
+                    style: TextStyle(
+                      fontSize: isWeb ? 16 : 4.sp,
+                    ),
                   ),
-                  SizedBox(height: screenHeight * 0.05),
+
+                  SizedBox(height: isWeb ? 40 : 5.h),
                 ],
               ),
             ),

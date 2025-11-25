@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_app/core/responsive/size_config.dart';
 import 'package:fruit_app/core/utils/app_colors.dart';
 
 class CustomTextButton extends StatelessWidget {
@@ -7,10 +8,12 @@ class CustomTextButton extends StatelessWidget {
   final Widget destination;
   @override
   Widget build(BuildContext context) {
+        bool isWeb = MediaQuery.of(context).size.width >= 1024;
+
     return TextButton(
       child: Text(
         text,
-        style: TextStyle(color: kTextButtonColor, fontSize: 16),
+        style: TextStyle(color: kTextButtonColor, fontSize:isWeb?22: 4.sp),
       ),
       onPressed: () {
         Navigator.push(

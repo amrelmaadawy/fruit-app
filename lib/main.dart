@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_app/core/responsive/size_config.dart';
 import 'package:fruit_app/features/splash/views/splash_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig.init(context);
     return MaterialApp(
       theme: ThemeData(fontFamily: 'Poppins'),
       debugShowCheckedModeBanner: false,
