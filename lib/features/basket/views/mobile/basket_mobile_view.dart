@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/utils/app_colors.dart';
+import 'package:fruit_app/features/basket/checkout_view.dart';
 import 'package:fruit_app/features/basket/views/widgets/basket_product_item.dart';
 
 class BasketMobileView extends StatelessWidget {
@@ -118,10 +119,7 @@ class BasketMobileView extends StatelessWidget {
                       children: [
                         Text(
                           '4 item in cart',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: kBorderColor,
-                          ),
+                          style: TextStyle(fontSize: 16, color: kBorderColor),
                         ),
                         Text(
                           '37.50 KD',
@@ -136,11 +134,19 @@ class BasketMobileView extends StatelessWidget {
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.55,
+                    height: MediaQuery.of(context).size.height * 0.05,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: kPrimaryColor,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CheckoutView(),
+                          ),
+                        );
+                      },
                       child: Text(
                         'Procced To checkout',
                         style: TextStyle(

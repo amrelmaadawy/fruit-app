@@ -11,8 +11,8 @@ class OnboardingView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ResponsiveLayout(
       mobile: OnboardingMobileView(),
-      desktop: OnboardingDesktopView(),
-      taplet: OnboardingTabletView(),
+      desktop: OnboardingMobileView(),
+      taplet: OnboardingMobileView(),
     );
   }
 }

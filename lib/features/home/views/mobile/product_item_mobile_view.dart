@@ -228,6 +228,7 @@ class _ProductItemMobileViewState extends State<ProductItemMobileView> {
                   alignment: AlignmentGeometry.bottomRight,
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width * 0.4,
+                    height: MediaQuery.of(context).size.height * 0.05,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: kPrimaryColor,
