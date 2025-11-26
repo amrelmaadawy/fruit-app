@@ -1,13 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/components/custom_elevated_button.dart';
 import 'package:fruit_app/core/components/custom_pop_menu_button.dart';
 import 'package:fruit_app/core/utils/app_colors.dart';
 
 class FilterCard extends StatelessWidget {
-  const FilterCard({
-    super.key,
-  });
+  const FilterCard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +22,7 @@ class FilterCard extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: kBlackColor
+                  color: kBlackColor,
                 ),
               ),
             ),
@@ -33,44 +30,23 @@ class FilterCard extends StatelessWidget {
               children: [
                 Text(
                   'Delived To ',
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: kBorderColor,
-                  ),
+                  style: TextStyle(fontSize: 15, color: kBorderColor),
                 ),
-                Icon(
-                  Icons.delivery_dining_outlined,
-                  color: kPrimaryColor,
-                ),
+                Icon(Icons.delivery_dining_outlined, color: kPrimaryColor),
               ],
             ),
-            CustomPopMenuButton(),
-            Text(
-              'Offers',
-              style: TextStyle(
-                fontSize: 15,
-                color: kBorderColor,
-              ),
-            ),
+            CustomPopMenuButton(title: 'Select Area'),
+            Text('Offers', style: TextStyle(fontSize: 15, color: kBorderColor)),
             Text(
               'Free Delivery',
-              style: TextStyle(
-                fontSize: 15,
-                color: kBorderColor,
-              ),
+              style: TextStyle(fontSize: 15, color: kBorderColor),
             ),
-            CustomElevatedButton(
-              onPressed: () {},
-              text: 'Apply Filter',
-            ),
+            CustomElevatedButton(onPressed: () {}, text: 'Apply Filter'),
             Align(
               alignment: AlignmentGeometry.center,
               child: TextButton(
                 onPressed: () {},
-                child: Text(
-                  'Cancel',
-                  style: TextStyle(color: kBorderColor),
-                ),
+                child: Text('Cancel', style: TextStyle(color: kBorderColor)),
               ),
             ),
           ],
