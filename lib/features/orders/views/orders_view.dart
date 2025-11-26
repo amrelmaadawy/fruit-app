@@ -3,6 +3,7 @@ import 'package:fruit_app/core/responsive/size_config.dart';
 import 'package:fruit_app/core/utils/app_colors.dart';
 import 'package:fruit_app/core/utils/app_size.dart';
 import 'package:fruit_app/features/orders/model/order_class.dart';
+import 'package:fruit_app/features/orders/views/order_tracking_view.dart';
 
 class OrdersView extends StatelessWidget {
   const OrdersView({super.key});
@@ -82,10 +83,20 @@ class OrdersView extends StatelessWidget {
                         ],
                       ),
                       Spacer(),
-                      CircleAvatar(
-                        radius: 6.5.sp,
-                        backgroundColor: order.textColor,
-                        child: Icon(Icons.arrow_forward, color: Colors.white),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => OrderTrackingView(),
+                            ),
+                          );
+                        },
+                        child: CircleAvatar(
+                          radius: 6.5.sp,
+                          backgroundColor: order.textColor,
+                          child: Icon(Icons.arrow_forward, color: Colors.white),
+                        ),
                       ),
                     ],
                   ),
