@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/components/custom_elevated_button.dart';
+import 'package:fruit_app/core/responsive/size_config.dart';
 import 'package:fruit_app/core/utils/app_colors.dart';
 import 'package:fruit_app/core/utils/app_size.dart';
+import 'package:fruit_app/features/basket/views/mobile/checkout_confirmed_mobile_view.dart';
 import 'package:fruit_app/features/basket/views/mobile/widgets/payment_mobile_view.dart';
 import 'package:fruit_app/features/basket/views/mobile/widgets/select_address_mobile_view.dart';
 import 'package:fruit_app/features/basket/views/mobile/widgets/select_date_mobile_view.dart';
@@ -24,7 +26,7 @@ class _CheckoutMobileViewState extends State<CheckoutMobileView> {
         title: Text(
           'Checkout',
           style: TextStyle(
-            fontSize: 24,
+            fontSize: 5.sp,
             fontWeight: FontWeight.bold,
             color: kPrimaryColor,
           ),
@@ -45,21 +47,41 @@ class _CheckoutMobileViewState extends State<CheckoutMobileView> {
                     });
                   },
                   controller: pageController,
-                  children: [SelectDateMobileView(), SelectAddressMobileView(),PaymentMobileView()],
+                  children: [
+                    SelectDateMobileView(),
+                    SelectAddressMobileView(),
+                    PaymentMobileView(),
+                  ],
                 ),
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.06,
-                child: CustomElevatedButton(
-                  onPressed: () {
-                    pageController.nextPage(
-                      duration: Duration(milliseconds: 500),
-                      curve: Curves.bounceInOut,
-                    );
-                  },
-                  text: 'Continue',
-                ),
-              ),
+              isLastPage
+                  ? SizedBox(
+                      height: 6.h,
+                      child: CustomElevatedButton(
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  CheckoutConfirmedMobileView(),
+                            ),
+                          );
+                        },
+                        text: 'Place Order',
+                      ),
+                    )
+                  : SizedBox(
+                      height: 6.h,
+                      child: CustomElevatedButton(
+                        onPressed: () {
+                          pageController.nextPage(
+                            duration: Duration(milliseconds: 500),
+                            curve: Curves.bounceInOut,
+                          );
+                        },
+                        text: 'Continue',
+                      ),
+                    ),
             ],
           ),
         ),

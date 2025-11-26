@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/components/custom_elevated_button.dart';
 import 'package:fruit_app/core/components/custom_text_form_field.dart';
+import 'package:fruit_app/core/responsive/size_config.dart';
 import 'package:fruit_app/core/utils/app_colors.dart';
 import 'package:fruit_app/core/utils/app_size.dart';
 
@@ -22,7 +23,7 @@ class _PaymentMobileViewState extends State<PaymentMobileView> {
         Text(
           'Coupon Code',
           style: TextStyle(
-            fontSize: 18,
+            fontSize: 4.sp,
             fontWeight: FontWeight.bold,
             color: kBlackColor,
           ),
@@ -31,8 +32,8 @@ class _PaymentMobileViewState extends State<PaymentMobileView> {
           suffixIcon: Padding(
             padding: const EdgeInsets.all(5),
             child: SizedBox(
-              width: MediaQuery.of(context).size.width * 0.3,
-              height: MediaQuery.of(context).size.height * 0.02,
+              width: 25.w,
+              height: 4.h,
               child: CustomElevatedButton(onPressed: () {}, text: 'Apply'),
             ),
           ),
@@ -44,12 +45,12 @@ class _PaymentMobileViewState extends State<PaymentMobileView> {
           },
           keyboardType: TextInputType.text,
         ),
-        SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+        SizedBox(height: 2.h),
 
         Text(
           'Order Details',
           style: TextStyle(
-            fontSize: 18,
+            fontSize: 4.sp,
             fontWeight: FontWeight.bold,
             color: kBlackColor,
           ),
@@ -61,13 +62,13 @@ class _PaymentMobileViewState extends State<PaymentMobileView> {
                 Expanded(
                   child: Text(
                     'Total Items',
-                    style: TextStyle(fontSize: 16, color: kBorderColor),
+                    style: TextStyle(fontSize: 3.5.sp, color: kBorderColor),
                   ),
                 ),
                 Text(
                   '4 Items in Cart',
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 3.5.sp,
                     fontWeight: FontWeight.bold,
                     color: kBorderColor,
                   ),
@@ -79,13 +80,13 @@ class _PaymentMobileViewState extends State<PaymentMobileView> {
                 Expanded(
                   child: Text(
                     'Subtotal',
-                    style: TextStyle(fontSize: 16, color: kBorderColor),
+                    style: TextStyle(fontSize: 3.5.sp, color: kBorderColor),
                   ),
                 ),
                 Text(
                   '36.00 KD',
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 3.5.sp,
                     fontWeight: FontWeight.bold,
                     color: kBorderColor,
                   ),
@@ -97,13 +98,13 @@ class _PaymentMobileViewState extends State<PaymentMobileView> {
                 Expanded(
                   child: Text(
                     'Shipping Charges',
-                    style: TextStyle(fontSize: 16, color: kBorderColor),
+                    style: TextStyle(fontSize: 3.5.sp, color: kBorderColor),
                   ),
                 ),
                 Text(
                   '1.50',
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 3.5.sp,
                     fontWeight: FontWeight.bold,
                     color: kBorderColor,
                   ),
@@ -111,7 +112,7 @@ class _PaymentMobileViewState extends State<PaymentMobileView> {
                 Text(
                   'KD',
                   style: TextStyle(
-                    fontSize: 12,
+                    fontSize: 2.5.sp,
                     fontWeight: FontWeight.bold,
                     color: Colors.grey.shade500,
                   ),
@@ -125,7 +126,7 @@ class _PaymentMobileViewState extends State<PaymentMobileView> {
                   child: Text(
                     'Bag Total',
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 3.5.sp,
                       color: kPrimaryColor,
                       fontWeight: FontWeight.bold,
                     ),
@@ -134,7 +135,7 @@ class _PaymentMobileViewState extends State<PaymentMobileView> {
                 Text(
                   '37.50',
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 3.5.sp,
                     fontWeight: FontWeight.bold,
                     color: kPrimaryColor,
                   ),
@@ -142,14 +143,14 @@ class _PaymentMobileViewState extends State<PaymentMobileView> {
                 Text(
                   'KD',
                   style: TextStyle(
-                    fontSize: 12,
+                    fontSize: 2.5.sp,
                     fontWeight: FontWeight.bold,
                     color: kPrimaryColor,
                   ),
                 ),
               ],
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+            SizedBox(height: 2.h),
 
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -157,7 +158,7 @@ class _PaymentMobileViewState extends State<PaymentMobileView> {
                 Text(
                   'Payments',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 4.sp,
                     fontWeight: FontWeight.bold,
                     color: kBlackColor,
                   ),
@@ -181,7 +182,7 @@ class _PaymentMobileViewState extends State<PaymentMobileView> {
                             ),
                           ),
                           child: SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.065,
+                            height: 6.5.h,
                             child: RadioMenuButton<String>(
                               value: 'credit',
                               groupValue: selectedPayment,
@@ -194,18 +195,10 @@ class _PaymentMobileViewState extends State<PaymentMobileView> {
                                 children: [
                                   Image.asset(
                                     'assets/images/credit card.png',
-                                    width:
-                                        MediaQuery.of(context).size.width *
-                                        0.09,
-                                    height:
-                                        MediaQuery.of(context).size.height *
-                                        0.08,
+                                    width: 9.w,
+                                    height: 8.h,
                                   ),
-                                  SizedBox(
-                                    width:
-                                        MediaQuery.of(context).size.width *
-                                        0.02,
-                                  ),
+                                  SizedBox(width: 2.w),
                                   Text('Credit Card / Debit Card'),
                                 ],
                               ),
@@ -224,7 +217,7 @@ class _PaymentMobileViewState extends State<PaymentMobileView> {
                             ),
                           ),
                           child: SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.065,
+                            height: 6.5.h,
                             child: RadioMenuButton<String>(
                               value: 'cash',
                               groupValue: selectedPayment,
@@ -237,18 +230,10 @@ class _PaymentMobileViewState extends State<PaymentMobileView> {
                                 children: [
                                   Image.asset(
                                     'assets/images/cash.png',
-                                    width:
-                                        MediaQuery.of(context).size.width *
-                                        0.09,
-                                    height:
-                                        MediaQuery.of(context).size.height *
-                                        0.08,
+                                    width: 9.w,
+                                    height: 8.h,
                                   ),
-                                  SizedBox(
-                                    width:
-                                        MediaQuery.of(context).size.width *
-                                        0.02,
-                                  ),
+                                  SizedBox(width: 2.w),
                                   Text('Cash of delivery'),
                                 ],
                               ),
@@ -267,7 +252,7 @@ class _PaymentMobileViewState extends State<PaymentMobileView> {
                             ),
                           ),
                           child: SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.065,
+                            height: 6.5.h,
                             child: RadioMenuButton<String>(
                               value: 'knet',
                               groupValue: selectedPayment,
@@ -280,18 +265,10 @@ class _PaymentMobileViewState extends State<PaymentMobileView> {
                                 children: [
                                   Image.asset(
                                     'assets/images/knet.png',
-                                    width:
-                                        MediaQuery.of(context).size.width *
-                                        0.09,
-                                    height:
-                                        MediaQuery.of(context).size.height *
-                                        0.08,
+                                    width: 9.w,
+                                    height: 8.h,
                                   ),
-                                  SizedBox(
-                                    width:
-                                        MediaQuery.of(context).size.width *
-                                        0.02,
-                                  ),
+                                  SizedBox(width: 2.w),
                                   Text('kent'),
                                 ],
                               ),

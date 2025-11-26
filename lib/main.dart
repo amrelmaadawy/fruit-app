@@ -18,7 +18,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return MaterialApp(
-      theme: ThemeData(fontFamily: 'Poppins'),
+      
+      theme: ThemeData(fontFamily: 'Poppins',scaffoldBackgroundColor: Colors.white),
       debugShowCheckedModeBanner: false,
       home: SplashView(),
     );
