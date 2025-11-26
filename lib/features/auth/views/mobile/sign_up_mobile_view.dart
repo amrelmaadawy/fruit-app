@@ -35,7 +35,7 @@ class SignUpMobileView extends StatelessWidget {
                     style: TextStyle(
                       color: kPrimaryColor,
                       fontWeight: FontWeight.bold,
-                      fontSize: isWeb ? 28 : 10.sp,
+                      fontSize: isWeb ? 42 : 10.sp,
                     ),
                   ),
 
@@ -44,7 +44,7 @@ class SignUpMobileView extends StatelessWidget {
                   Text(
                     'Welcome to Our app',
                     style: TextStyle(
-                      fontSize: isWeb ? 32 : 6.w,
+                      fontSize: isWeb ? 30 : 6.w,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

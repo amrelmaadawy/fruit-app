@@ -26,7 +26,7 @@ class _LoginMobileViewState extends State<LoginMobileView> {
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(kDefAuthPadding),
+            padding:  EdgeInsets.all(kDefAuthPadding),
             child: Column(
               children: [
                 Text(

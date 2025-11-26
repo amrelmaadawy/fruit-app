@@ -41,7 +41,7 @@ class _OnboardingViewState extends State<OnboardingView> {
           appBar: AppBar(),
           body: SafeArea(
             child: Padding(
-              padding: const EdgeInsets.all(kDefAuthPadding),
+              padding:  EdgeInsets.all(kDefAuthPadding),
               child: Column(
                 children: [
                   Align(

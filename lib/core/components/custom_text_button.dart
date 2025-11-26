@@ -13,7 +13,7 @@ class CustomTextButton extends StatelessWidget {
     return TextButton(
       child: Text(
         text,
-        style: TextStyle(color: kTextButtonColor, fontSize:isWeb?22: 4.sp),
+        style: TextStyle(color: kTextButtonColor, fontSize:isWeb?22: 3.5.sp),
       ),
       onPressed: () {
         Navigator.push(

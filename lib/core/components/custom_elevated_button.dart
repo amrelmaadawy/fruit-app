@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_app/core/responsive/size_config.dart';
 import 'package:fruit_app/core/utils/app_colors.dart';
 
 class CustomElevatedButton extends StatelessWidget {
@@ -11,9 +12,11 @@ class CustomElevatedButton extends StatelessWidget {
   final String text;
   @override
   Widget build(BuildContext context) {
+    bool isWeb = MediaQuery.of(context).size.width >= 1024;
+
     return SizedBox(
       width: double.infinity,
-      height: MediaQuery.of(context).size.height * 0.05,
+      height: isWeb ? 50 : 9.sp,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(backgroundColor: kPrimaryColor),
@@ -22,7 +25,7 @@ class CustomElevatedButton extends StatelessWidget {
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.w600,
-            fontSize: 16,
+            fontSize: isWeb ? 22 : 3.5.sp,
           ),
         ),
       ),

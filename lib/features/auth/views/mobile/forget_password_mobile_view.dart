@@ -22,7 +22,7 @@ class _ForgetPasswordMobileViewState extends State<ForgetPasswordMobileView> {
       appBar: AppBar(),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(kDefAuthPadding),
+          padding:  EdgeInsets.all(kDefAuthPadding),
           child: Column(
             children: [
               Text(

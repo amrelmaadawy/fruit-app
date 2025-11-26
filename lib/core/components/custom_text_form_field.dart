@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_app/core/responsive/size_config.dart';
 import 'package:fruit_app/core/utils/app_colors.dart';
 import 'package:fruit_app/core/utils/app_size.dart';
 
@@ -25,6 +26,8 @@ class CustomTextFormField extends StatelessWidget {
   final bool obscureText;
   @override
   Widget build(BuildContext context) {
+    bool isWeb = MediaQuery.of(context).size.width >= 1024;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -33,12 +36,12 @@ class CustomTextFormField extends StatelessWidget {
             : Text(
                 text,
                 style: TextStyle(
-                  fontSize: 17,
+                  fontSize: isWeb ? 25 : 3.5.sp,
                   fontWeight: FontWeight.w600,
                   color: kSubTextColor,
                 ),
               ),
-        SizedBox(height: 10),
+        SizedBox(height: isWeb ? 22 : 1.h),
         TextFormField(
           obscureText: obscureText,
           controller: controller,
@@ -49,12 +52,14 @@ class CustomTextFormField extends StatelessWidget {
             prefixIcon: prefixIcon,
             suffixIcon: suffixIcon,
             labelText: labelText,
-            labelStyle: TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
+            labelStyle: TextStyle(
+              fontSize: isWeb ? 25 : 3.sp,
+            ),
             filled: true,
             fillColor: Colors.white,
-            contentPadding: const EdgeInsets.symmetric(
-              horizontal: 16,
-              vertical: 14,
+            contentPadding: EdgeInsets.symmetric(
+              horizontal: isWeb ? 16 : 1.5.sp,
+              vertical: isWeb ? 16 : 1.5.sp,
             ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(kDefBorderRaduis),

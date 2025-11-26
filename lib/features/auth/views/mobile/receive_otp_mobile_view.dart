@@ -13,7 +13,7 @@ class RecevieOtpMobileView extends StatelessWidget {
       appBar: AppBar(),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(kDefAuthPadding),
+          padding:  EdgeInsets.all(kDefAuthPadding),
           child: Column(
             children: [
               Text(
