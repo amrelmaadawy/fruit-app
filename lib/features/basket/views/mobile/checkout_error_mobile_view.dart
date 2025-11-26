@@ -48,7 +48,7 @@ class CheckoutErrorMobileView extends StatelessWidget {
                   style: TextStyle(fontSize: 3.6.sp, color: kBorderColor),
                 ),
 
-                SizedBox(height: 1.5.h),
+                SizedBox(height: 6.h),
 
                 SizedBox(
                   width: double.infinity,
