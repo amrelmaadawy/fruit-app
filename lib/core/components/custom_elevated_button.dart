@@ -13,10 +13,15 @@ class CustomElevatedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isWeb = MediaQuery.of(context).size.width >= 1024;
+    final orientation = MediaQuery.of(context).orientation;
 
     return SizedBox(
       width: double.infinity,
-      height: isWeb ? 50 : 5.h,
+      height: isWeb
+          ? 50
+          : orientation == Orientation.landscape
+          ? 40
+          : 5.h,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(backgroundColor: kPrimaryColor),

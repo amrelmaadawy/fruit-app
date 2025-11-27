@@ -36,12 +36,12 @@ class CustomTextFormField extends StatelessWidget {
             : Text(
                 text,
                 style: TextStyle(
-                  fontSize: isWeb ? 25 : 3.5.sp,
+                  fontSize: isWeb ? 20 : 3.5.sp,
                   fontWeight: FontWeight.w600,
                   color: kSubTextColor,
                 ),
               ),
-        SizedBox(height: isWeb ? 22 : 1.h),
+        SizedBox(height: isWeb ? 20 : 1.h),
         TextFormField(
           obscureText: obscureText,
           controller: controller,
@@ -52,9 +52,7 @@ class CustomTextFormField extends StatelessWidget {
             prefixIcon: prefixIcon,
             suffixIcon: suffixIcon,
             labelText: labelText,
-            labelStyle: TextStyle(
-              fontSize: isWeb ? 25 : 3.sp,
-            ),
+            labelStyle: TextStyle(fontSize: isWeb ? 18 : 3.sp),
             filled: true,
             fillColor: Colors.white,
             contentPadding: EdgeInsets.symmetric(
