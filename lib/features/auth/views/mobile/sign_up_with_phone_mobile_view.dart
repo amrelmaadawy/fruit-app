@@ -5,17 +5,17 @@ import 'package:fruit_app/core/components/custom_text_form_field.dart';
 import 'package:fruit_app/core/responsive/size_config.dart';
 import 'package:fruit_app/core/utils/app_colors.dart';
 import 'package:fruit_app/core/utils/app_size.dart';
-import 'package:fruit_app/features/auth/views/login_view.dart';
+import 'package:fruit_app/features/auth/views/mobile/login_mobile_view.dart';
 
-class SignUpWithPhoneMobileView extends StatefulWidget {
-  const SignUpWithPhoneMobileView({super.key});
+class SignUpWithPhoneView extends StatefulWidget {
+  const SignUpWithPhoneView({super.key});
 
   @override
-  State<SignUpWithPhoneMobileView> createState() =>
-      _SignUpWithPhoneMobileViewState();
+  State<SignUpWithPhoneView> createState() =>
+      _SignUpWithPhoneViewState();
 }
 
-class _SignUpWithPhoneMobileViewState extends State<SignUpWithPhoneMobileView> {
+class _SignUpWithPhoneViewState extends State<SignUpWithPhoneView> {
   TextEditingController fullNameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
