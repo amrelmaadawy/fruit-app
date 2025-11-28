@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:fruit_app/core/responsive/responsive_layout.dart';
 import 'package:fruit_app/features/home/views/desktop/seller_desktop_view.dart';
 import 'package:fruit_app/features/home/views/mobile/seller_mobile_view.dart';
-import 'package:fruit_app/features/home/views/tablet/seller_tablet_view.dart';
 
 class SellerView extends StatelessWidget {
   const SellerView({super.key});
@@ -12,7 +11,6 @@ class SellerView extends StatelessWidget {
     return ResponsiveLayout(
       mobile: SellerMobileView(),
       desktop: SellerDesktopView(),
-      taplet: SellerTabletView(),
     );
   }
 }

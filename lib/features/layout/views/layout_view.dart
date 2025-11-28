@@ -1,7 +1,6 @@
 import 'package:fruit_app/core/responsive/responsive_layout.dart';
 import 'package:fruit_app/features/layout/views/desktop/layout_desktop_view.dart';
 import 'package:fruit_app/features/layout/views/mobile/layout_mobile_view.dart';
-import 'package:fruit_app/features/layout/views/tablet/layout_tablet_view.dart';
 import 'package:flutter/material.dart';
 
 class LayoutView extends StatelessWidget {
@@ -12,7 +11,6 @@ class LayoutView extends StatelessWidget {
     return ResponsiveLayout(
       mobile: LayoutMobileView(),
       desktop: LayoutDesktopView(),
-      taplet: LayoutTabletView(),
     );
   }
 }

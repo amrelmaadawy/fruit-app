@@ -5,18 +5,14 @@ class ResponsiveLayout extends StatelessWidget {
   const ResponsiveLayout({
     super.key,
     required this.mobile,
-    required this.taplet,
     required this.desktop,
     this.mobileLandscape,
-    this.tapletLandscape,
     this.desktopLandscape,
   });
 
   final Widget mobile;
-  final Widget taplet;
   final Widget desktop;
   final Widget? mobileLandscape;
-  final Widget? tapletLandscape;
   final Widget? desktopLandscape;
 
   @override
@@ -27,11 +23,8 @@ class ResponsiveLayout extends StatelessWidget {
       return orientation == Orientation.landscape
           ? (desktopLandscape ?? desktop)
           : desktop;
-    } else if (Responsive.isTablet(context)) {
-      return orientation == Orientation.landscape
-          ? (tapletLandscape ?? taplet)
-          : taplet;
-    } else {
+    } 
+     else {
       return orientation == Orientation.landscape
           ? (mobileLandscape ?? mobile)
           : mobile;

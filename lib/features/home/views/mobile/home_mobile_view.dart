@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/components/custom_text_button.dart';
+import 'package:fruit_app/core/responsive/size_config.dart';
 import 'package:fruit_app/core/utils/app_colors.dart';
 import 'package:fruit_app/features/home/views/seller_view.dart';
 import 'package:fruit_app/features/home/views/widgets/custom_home_item.dart';
@@ -12,7 +13,7 @@ class HomeMobileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height,
+      height: 100.h,
       child: Column(
         children: [
           Row(

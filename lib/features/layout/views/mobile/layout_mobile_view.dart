@@ -1,3 +1,4 @@
+import 'package:fruit_app/core/responsive/size_config.dart';
 import 'package:fruit_app/core/utils/app_colors.dart';
 import 'package:fruit_app/core/utils/app_size.dart';
 import 'package:fruit_app/features/basket/views/basket_view.dart';
@@ -34,38 +35,42 @@ class _LayoutMobileViewState extends State<LayoutMobileView> {
           child: IndexedStack(index: _currentIndex, children: _screens),
         ),
       ),
-      bottomNavigationBar: SalomonBottomBar(
-        unselectedItemColor: Colors.white,
-        backgroundColor: kPrimaryColor,
-        currentIndex: _currentIndex,
-        onTap: (i) => setState(() => _currentIndex = i),
-        items: [
-          SalomonBottomBarItem(
-            icon: const Icon(Icons.home_outlined),
-            title: Text('Home'),
-            selectedColor: Colors.white,
-          ),
-          SalomonBottomBarItem(
-            icon: const Icon(Icons.assignment_outlined),
-            title: Text('Orders'),
-            selectedColor: Colors.white,
-          ),
-          SalomonBottomBarItem(
-            icon: const Icon(Icons.shopping_basket_outlined),
-            title: Text('Basket'),
-            selectedColor: Colors.white,
-          ),
-          SalomonBottomBarItem(
-            icon: const Icon(Icons.favorite_border_outlined),
-            title: Text('Favorite'),
-            selectedColor: Colors.white,
-          ),
-          SalomonBottomBarItem(
-            icon: const Icon(Icons.menu),
-            title: Text('More'),
-            selectedColor: Colors.white,
-          ),
-        ],
+      bottomNavigationBar: SizedBox(
+        height: 10.h,
+        child: SalomonBottomBar(
+
+          unselectedItemColor: Colors.white,
+          backgroundColor: kPrimaryColor,
+          currentIndex: _currentIndex,
+          onTap: (i) => setState(() => _currentIndex = i),
+          items: [
+            SalomonBottomBarItem(
+              icon: Icon(Icons.home_outlined, size: 5.sp),
+              title: Text('Home', style: TextStyle(fontSize: 3.sp)),
+              selectedColor: Colors.white,
+            ),
+            SalomonBottomBarItem(
+              icon: Icon(Icons.assignment_outlined, size: 5.sp),
+              title: Text('Orders', style: TextStyle(fontSize: 3.sp)),
+              selectedColor: Colors.white,
+            ),
+            SalomonBottomBarItem(
+              icon: Icon(Icons.shopping_basket_outlined, size: 5.sp),
+              title: Text('Basket', style: TextStyle(fontSize: 3.sp)),
+              selectedColor: Colors.white,
+            ),
+            SalomonBottomBarItem(
+              icon: Icon(Icons.favorite_border_outlined, size: 5.sp),
+              title: Text('Favorite', style: TextStyle(fontSize: 3.sp)),
+              selectedColor: Colors.white,
+            ),
+            SalomonBottomBarItem(
+              icon: Icon(Icons.menu, size: 5.sp),
+              title: Text('More', style: TextStyle(fontSize: 3.sp)),
+              selectedColor: Colors.white,
+            ),
+          ],
+        ),
       ),
     );
   }
