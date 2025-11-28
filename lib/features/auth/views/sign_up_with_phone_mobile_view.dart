@@ -5,7 +5,7 @@ import 'package:fruit_app/core/components/custom_text_form_field.dart';
 import 'package:fruit_app/core/responsive/size_config.dart';
 import 'package:fruit_app/core/utils/app_colors.dart';
 import 'package:fruit_app/core/utils/app_size.dart';
-import 'package:fruit_app/features/auth/views/mobile/login_mobile_view.dart';
+import 'package:fruit_app/features/auth/views/login_mobile_view.dart';
 
 class SignUpWithPhoneView extends StatefulWidget {
   const SignUpWithPhoneView({super.key});

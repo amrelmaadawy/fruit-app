@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/utils/app_colors.dart';
 import 'package:fruit_app/core/utils/app_size.dart';
-import 'package:fruit_app/features/auth/views/mobile/sign_up_mobile_view.dart';
+import 'package:fruit_app/features/auth/views/sign_up_mobile_view.dart';
 import 'package:fruit_app/features/onboarding/views/widgets/custom_page_builder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';

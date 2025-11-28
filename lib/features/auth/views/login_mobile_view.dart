@@ -5,8 +5,8 @@ import 'package:fruit_app/core/components/custom_text_form_field.dart';
 import 'package:fruit_app/core/responsive/size_config.dart';
 import 'package:fruit_app/core/utils/app_colors.dart';
 import 'package:fruit_app/core/utils/app_size.dart';
-import 'package:fruit_app/features/auth/views/mobile/forget_password_mobile_view.dart';
-import 'package:fruit_app/features/auth/views/mobile/sign_up_mobile_view.dart';
+import 'package:fruit_app/features/auth/views/forget_password_mobile_view.dart';
+import 'package:fruit_app/features/auth/views/sign_up_mobile_view.dart';
 import 'package:fruit_app/features/layout/views/layout_view.dart';
 
 class LoginView extends StatefulWidget {
