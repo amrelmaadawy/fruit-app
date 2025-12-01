@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_app/core/responsive/size_config.dart';
 import 'package:fruit_app/core/utils/app_colors.dart';
 import 'package:fruit_app/features/basket/checkout_view.dart';
 import 'package:fruit_app/features/basket/views/widgets/basket_product_item.dart';
@@ -14,7 +15,7 @@ class BasketMobileView extends StatelessWidget {
           child: Text(
             'Basket',
             style: TextStyle(
-              fontSize: 24,
+              fontSize: 6.sp,
               fontWeight: FontWeight.bold,
               color: kPrimaryColor,
             ),
@@ -36,13 +37,13 @@ class BasketMobileView extends StatelessWidget {
                   Expanded(
                     child: Text(
                       'Subtotal',
-                      style: TextStyle(fontSize: 16, color: kBorderColor),
+                      style: TextStyle(fontSize: 3.sp, color: kBorderColor),
                     ),
                   ),
                   Text(
                     '36.00',
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 3.sp,
                       fontWeight: FontWeight.bold,
                       color: kBorderColor,
                     ),
@@ -50,7 +51,7 @@ class BasketMobileView extends StatelessWidget {
                   Text(
                     'KD',
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 2.sp,
                       fontWeight: FontWeight.bold,
                       color: Colors.grey.shade500,
                     ),
@@ -62,13 +63,13 @@ class BasketMobileView extends StatelessWidget {
                   Expanded(
                     child: Text(
                       'Shipping Charges',
-                      style: TextStyle(fontSize: 16, color: kBorderColor),
+                      style: TextStyle(fontSize: 3.5.sp, color: kBorderColor),
                     ),
                   ),
                   Text(
                     '1.50',
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 3.5.sp,
                       fontWeight: FontWeight.bold,
                       color: kBorderColor,
                     ),
@@ -76,7 +77,7 @@ class BasketMobileView extends StatelessWidget {
                   Text(
                     'KD',
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 2.3.sp,
                       fontWeight: FontWeight.bold,
                       color: Colors.grey.shade500,
                     ),
@@ -88,13 +89,13 @@ class BasketMobileView extends StatelessWidget {
                   Expanded(
                     child: Text(
                       'Bag Total',
-                      style: TextStyle(fontSize: 16, color: kPrimaryColor),
+                      style: TextStyle(fontSize: 3.sp, color: kPrimaryColor),
                     ),
                   ),
                   Text(
                     '37.50',
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 3.5.sp,
                       fontWeight: FontWeight.bold,
                       color: kPrimaryColor,
                     ),
@@ -102,7 +103,7 @@ class BasketMobileView extends StatelessWidget {
                   Text(
                     'KD',
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 2.3.sp,
                       fontWeight: FontWeight.bold,
                       color: kPrimaryColor,
                     ),
@@ -119,12 +120,15 @@ class BasketMobileView extends StatelessWidget {
                       children: [
                         Text(
                           '4 item in cart',
-                          style: TextStyle(fontSize: 16, color: kBorderColor),
+                          style: TextStyle(
+                            fontSize: 3.5.sp,
+                            color: kBorderColor,
+                          ),
                         ),
                         Text(
                           '37.50 KD',
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: 3.5.sp,
                             fontWeight: FontWeight.bold,
                             color: kBorderColor,
                           ),
@@ -133,8 +137,8 @@ class BasketMobileView extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.55,
-                    height: MediaQuery.of(context).size.height * 0.05,
+                    width: 55.w,
+                    height: 5.h,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: kPrimaryColor,
@@ -150,7 +154,7 @@ class BasketMobileView extends StatelessWidget {
                       child: Text(
                         'Procced To checkout',
                         style: TextStyle(
-                          fontSize: 15,
+                          fontSize: 3.5.sp,
                           fontWeight: FontWeight.w600,
                           color: Colors.white,
                         ),

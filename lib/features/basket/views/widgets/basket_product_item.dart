@@ -1,17 +1,15 @@
-
 import 'package:flutter/material.dart';
+import 'package:fruit_app/core/responsive/size_config.dart';
 import 'package:fruit_app/core/utils/app_colors.dart';
 import 'package:fruit_app/core/utils/app_size.dart';
 
 class BasketProductItem extends StatelessWidget {
-  const BasketProductItem({
-    super.key,
-  });
+  const BasketProductItem({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.15,
+      height: 18.h,
       child: Card(
         color: Colors.white,
         elevation: 2,
@@ -24,7 +22,7 @@ class BasketProductItem extends StatelessWidget {
             children: [
               CircleAvatar(
                 backgroundColor: Colors.white,
-                radius: MediaQuery.of(context).size.width * 0.1,
+                radius: 10.sp,
                 child: Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadiusGeometry.circular(
@@ -41,7 +39,7 @@ class BasketProductItem extends StatelessWidget {
                   Text(
                     'Product Name',
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 4.sp,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -49,15 +47,13 @@ class BasketProductItem extends StatelessWidget {
                     children: [
                       Text(
                         '12.00 KD',
-                        style: TextStyle(fontSize: 14, color: kBorderColor),
+                        style: TextStyle(fontSize: 3.6.sp, color: kBorderColor),
                       ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.05,
-                      ),
+                      SizedBox(width: 5.w),
                       Text(
                         '14.00 KD',
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 4.sp,
                           color: Colors.grey.shade400,
                         ),
                       ),
@@ -72,7 +68,7 @@ class BasketProductItem extends StatelessWidget {
                     child: Text(
                       'Up to 10 % Off',
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: 3.sp,
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
                       ),
@@ -85,8 +81,8 @@ class BasketProductItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(Icons.delete_forever_outlined, size: 30),
-    
+                  Icon(Icons.delete_forever_outlined, size: 5.5.sp),
+
                   Card(
                     color: Colors.white,
                     shape: RoundedRectangleBorder(
@@ -99,10 +95,13 @@ class BasketProductItem extends StatelessWidget {
                       children: [
                         IconButton(
                           onPressed: () {},
-                          icon: Icon(Icons.remove),
+                          icon: Icon(Icons.remove, size: 5.5.sp),
                         ),
-                        Text('2'),
-                        IconButton(onPressed: () {}, icon: Icon(Icons.add)),
+                        Text('2', style: TextStyle(fontSize: 3.sp)),
+                        IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.add, size: 5.5.sp),
+                        ),
                       ],
                     ),
                   ),
