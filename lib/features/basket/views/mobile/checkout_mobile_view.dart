@@ -37,7 +37,7 @@ class _CheckoutMobileViewState extends State<CheckoutMobileView> {
           padding: const EdgeInsets.all(kDefHomePadding),
           child: Column(
             children: [
-              SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+              SizedBox(height: 10.h),
               Expanded(
                 flex: 7,
                 child: PageView(

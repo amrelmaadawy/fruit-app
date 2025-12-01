@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_app/core/responsive/size_config.dart';
 import 'package:fruit_app/core/utils/app_colors.dart';
 import 'package:fruit_app/core/utils/app_size.dart';
 
@@ -13,7 +14,7 @@ class SelectAddressMobileView extends StatelessWidget {
         Text(
           'Select Delivery Address',
           style: TextStyle(
-            fontSize: 18,
+            fontSize: 4.sp,
             fontWeight: FontWeight.bold,
             color: kBlackColor,
           ),
@@ -31,13 +32,16 @@ class SelectAddressMobileView extends StatelessWidget {
                   child: Text(
                     'Add New Address',
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 3.5.sp,
                       fontWeight: FontWeight.bold,
                       color: kBlackColor,
                     ),
                   ),
                 ),
-                IconButton(onPressed: () {}, icon: Icon(Icons.add)),
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.add, size: 8.sp),
+                ),
               ],
             ),
           ),
@@ -56,7 +60,7 @@ class SelectAddressMobileView extends StatelessWidget {
                     Text(
                       'Address 1',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 3.5.sp,
                         fontWeight: FontWeight.bold,
                         color: kBlackColor,
                       ),
@@ -64,22 +68,26 @@ class SelectAddressMobileView extends StatelessWidget {
                     Spacer(),
                     IconButton(
                       onPressed: () {},
-                      icon: Icon(Icons.check_circle, color: kPrimaryColor),
+                      icon: Icon(
+                        Icons.check_circle,
+                        color: kPrimaryColor,
+                        size: 8.sp,
+                      ),
                     ),
                   ],
                 ),
                 Text(
                   'Jhon',
-                  style: TextStyle(fontSize: 16, color: kBlackColor),
+                  style: TextStyle(fontSize: 3.5.sp, color: kBlackColor),
                 ),
                 Text(
                   '01011010112',
-                  style: TextStyle(fontSize: 16, color: kBlackColor),
+                  style: TextStyle(fontSize: 3.5.sp, color: kBlackColor),
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                SizedBox(height: 1.h),
                 Text(
                   'Room # 1 - Ground Floor, Al Najoum Building, 24 B Street, Dubai - United Arab Emirates',
-                  style: TextStyle(fontSize: 16, color: kSubTextColor),
+                  style: TextStyle(fontSize: 4.sp, color: kSubTextColor),
                 ),
               ],
             ),
