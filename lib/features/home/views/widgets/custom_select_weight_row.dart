@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_app/core/responsive/size_config.dart';
 import 'package:fruit_app/core/utils/app_colors.dart';
 import 'package:fruit_app/core/utils/app_size.dart';
 
@@ -22,12 +23,12 @@ class CustomSelectWeightRow extends StatelessWidget {
               Text(
               title,
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 3.5.sp,
                   fontWeight: FontWeight.bold,
                   color: kBlackColor,
                 ),
               ),
-              Icon(Icons.expand_more_outlined),
+              Icon(Icons.expand_more_outlined,size: 5.sp,),
             ],
           ),
         ),

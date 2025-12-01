@@ -21,13 +21,13 @@ class HomeMobileView extends StatelessWidget {
               Text(
                 'Fruit Market',
                 style: TextStyle(
-                  fontSize: 24,
+                  fontSize: 6.sp,
                   fontWeight: FontWeight.bold,
                   color: kPrimaryColor,
                 ),
               ),
               Spacer(),
-              Icon(Icons.search, color: kPrimaryColor, size: 30),
+              Icon(Icons.search, color: kPrimaryColor, size: 8.sp),
               IconButton(
                 onPressed: () {
                   showDialog(
@@ -37,11 +37,15 @@ class HomeMobileView extends StatelessWidget {
                     },
                   );
                 },
-                icon: Icon(Icons.filter_list, color: kPrimaryColor, size: 30),
+                icon: Icon(Icons.filter_list, color: kPrimaryColor, size: 8.sp),
               ),
             ],
           ),
-          Image.asset('assets/images/home_image.png'),
+          Image.asset(
+            'assets/images/home_image.png',
+            width: 90.w,
+            height: 20.h,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -55,7 +59,7 @@ class HomeMobileView extends StatelessWidget {
             children: [
               Text(
                 'Sellers',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 3.5.sp, fontWeight: FontWeight.bold),
               ),
               Spacer(),
               CustomTextButton(text: 'Show all', destination: Container()),
@@ -63,7 +67,7 @@ class HomeMobileView extends StatelessWidget {
           ),
           Expanded(
             child: ListView.separated(
-              itemCount: 3,
+              itemCount: 10,
               shrinkWrap: true,
               itemBuilder: (context, index) {
                 return GestureDetector(
@@ -77,7 +81,7 @@ class HomeMobileView extends StatelessWidget {
                 );
               },
               separatorBuilder: (BuildContext context, int index) {
-                return SizedBox(height: 10);
+                return SizedBox(height: 2.h);
               },
             ),
           ),

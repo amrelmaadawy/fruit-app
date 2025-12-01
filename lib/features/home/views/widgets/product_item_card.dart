@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_app/core/responsive/size_config.dart';
 import 'package:fruit_app/core/utils/app_colors.dart';
 import 'package:fruit_app/core/utils/app_size.dart';
 import 'package:fruit_app/features/home/views/product_item_view.dart';
@@ -8,13 +9,25 @@ class ProductItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final bool isWeb = width > 600;
+
+    final double cardHeight = isWeb ? 180 : 15.h;
+    final double imageRadius = isWeb ? 50 : 10.w;
+    final double titleFont = isWeb ? 20 : 4.sp;
+    final double priceFont = isWeb ? 16 : 2.8.sp;
+    final double buttonRadius = isWeb ? 35 : 6.w;
+    final double iconSize = isWeb ? 24 : 5.5.sp;
+    final double offerHeight = isWeb ? 35 : 3.h;
+    final double offerWidth = isWeb ? 140 : 25.w;
+
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.12,
+      height: cardHeight,
       child: Card(
         color: Colors.white,
         elevation: 2,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadiusGeometry.circular(kDefBorderRaduis),
+          borderRadius: BorderRadius.circular(kDefBorderRaduis),
         ),
         child: Padding(
           padding: const EdgeInsets.all(kDefItemsPadding),
@@ -22,58 +35,81 @@ class ProductItemCard extends StatelessWidget {
             children: [
               CircleAvatar(
                 backgroundColor: Colors.white,
-                radius: MediaQuery.of(context).size.width * 0.1,
+                radius: imageRadius,
                 child: Card(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadiusGeometry.circular(
-                      kDefBorderRaduis,
+                    borderRadius: BorderRadius.circular(kDefBorderRaduis),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(isWeb ? 12 : 0),
+                    child: Image.asset(
+                      'assets/images/vegetables.png',
+                      width: isWeb ? 80 : 13.w,
+                      height: isWeb ? 80 : 13.w,
                     ),
                   ),
-                  child: Image.asset('assets/images/vegetables.png'),
                 ),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(
-                    'Product Name',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        '12.00 KD',
-                        style: TextStyle(fontSize: 14, color: kBorderColor),
+
+              SizedBox(width: isWeb ? 20 : 3.w),
+
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text(
+                      'Product Name',
+                      style: TextStyle(
+                        fontSize: titleFont,
+                        fontWeight: FontWeight.bold,
                       ),
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.05),
-                      Text(
-                        '14.00 KD',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey.shade400,
+                    ),
+
+                    Row(
+                      children: [
+                        Text(
+                          '12.00 KD',
+                          style: TextStyle(
+                            fontSize: priceFont,
+                            color: kBorderColor,
+                          ),
+                        ),
+                        SizedBox(width: isWeb ? 20 : 5.w),
+                        Text(
+                          '14.00 KD',
+                          style: TextStyle(
+                            fontSize: priceFont,
+                            color: Colors.grey.shade400,
+                            decoration: TextDecoration.lineThrough,
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    Container(
+                      width: offerWidth,
+                      height: offerHeight,
+                      decoration: BoxDecoration(
+                        color: kOfferColor,
+                        borderRadius: BorderRadius.circular(kDefBorderRaduis),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Up to 10 % Off',
+                          style: TextStyle(
+                            fontSize: priceFont,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
-                    ],
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(right: 7, left: 7),
-                    decoration: BoxDecoration(
-                      color: kOfferColor,
-                      borderRadius: BorderRadius.circular(kDefBorderRaduis),
                     ),
-                    child: Text(
-                      'Up to 10 % Off',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-              Spacer(),
+
+              // ---------------- Add to Cart Button ----------------
               GestureDetector(
                 onTap: () {
                   Navigator.push(
@@ -82,11 +118,11 @@ class ProductItemCard extends StatelessWidget {
                   );
                 },
                 child: CircleAvatar(
-                  radius: MediaQuery.of(context).size.width * 0.06,
+                  radius: buttonRadius,
                   backgroundColor: kPrimaryColor,
                   child: Icon(
-                    size: 25,
                     Icons.add_shopping_cart_outlined,
+                    size: iconSize,
                     color: Colors.white,
                   ),
                 ),

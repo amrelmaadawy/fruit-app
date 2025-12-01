@@ -10,7 +10,7 @@ class ProductItemView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ResponsiveLayout(
       mobile: ProductItemMobileView(),
-      desktop: ProductItemDesktoptView(),
+      desktop: ProductItemDesktopView(),
     );
   }
 }

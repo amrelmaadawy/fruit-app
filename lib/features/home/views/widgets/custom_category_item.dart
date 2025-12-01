@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_app/core/responsive/size_config.dart';
 import 'package:fruit_app/core/utils/app_colors.dart';
 import 'package:fruit_app/core/utils/app_size.dart';
 
@@ -12,9 +13,12 @@ class CustomCategoryItem extends StatelessWidget {
   final String title;
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+
+    final bool isWeb = width > 1024;
     return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.23,
-      height: MediaQuery.of(context).size.width * 0.25,
+      width: isWeb ? 150 : 22.w,
+      height: isWeb ? 300 : 27.w,
       child: Column(
         children: [
           Card(
@@ -24,13 +28,16 @@ class CustomCategoryItem extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(kDefItemsPadding),
               child: Image.asset(
-                width: MediaQuery.of(context).size.width * 0.13,
-                height: MediaQuery.of(context).size.width * 0.13,
+                width: isWeb ? 100 : 13.w,
+                height: isWeb ? 100 : 13.w,
                 imagepath,
               ),
             ),
           ),
-          Text(title, style: TextStyle(fontSize: 14, color: kBlackColor)),
+          Text(
+            title,
+            style: TextStyle(fontSize: isWeb ? 20 : 3.sp, color: kBlackColor),
+          ),
         ],
       ),
     );

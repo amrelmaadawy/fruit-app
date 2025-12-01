@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_app/core/responsive/size_config.dart';
 import 'package:fruit_app/core/utils/app_colors.dart';
 import 'package:fruit_app/core/utils/app_size.dart';
 import 'package:fruit_app/features/home/views/widgets/custom_select_weight_row.dart';
@@ -24,7 +25,7 @@ class _ProductItemMobileViewState extends State<ProductItemMobileView> {
           title: Text(
             'ProductName',
             style: TextStyle(
-              fontSize: 24,
+              fontSize: 5.sp,
               color: kPrimaryColor,
               fontWeight: FontWeight.bold,
             ),
@@ -36,7 +37,7 @@ class _ProductItemMobileViewState extends State<ProductItemMobileView> {
               icon: Icon(
                 Icons.favorite_outline,
                 fontWeight: FontWeight.w500,
-                size: 30,
+                size: 5.sp,
                 color: Colors.black,
               ),
             ),
@@ -45,7 +46,7 @@ class _ProductItemMobileViewState extends State<ProductItemMobileView> {
               icon: Icon(
                 Icons.ios_share_outlined,
                 fontWeight: FontWeight.w500,
-                size: 30,
+                size: 5.sp,
                 color: Colors.black,
               ),
             ),
@@ -73,7 +74,10 @@ class _ProductItemMobileViewState extends State<ProductItemMobileView> {
                         ),
                         child: Text(
                           '10% Off Discount',
-                          style: TextStyle(color: kBorderColor, fontSize: 17),
+                          style: TextStyle(
+                            color: kBorderColor,
+                            fontSize: 3.5.sp,
+                          ),
                         ),
                       ),
                     ),
@@ -83,7 +87,7 @@ class _ProductItemMobileViewState extends State<ProductItemMobileView> {
               Text(
                 'Category Name',
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 3.3.sp,
                   fontWeight: FontWeight.bold,
                   color: kPrimaryColor,
                 ),
@@ -94,7 +98,7 @@ class _ProductItemMobileViewState extends State<ProductItemMobileView> {
                     child: Text(
                       'Product Name',
                       style: TextStyle(
-                        fontSize: 22,
+                        fontSize: 3.7.sp,
                         fontWeight: FontWeight.bold,
                         color: kBlackColor,
                       ),
@@ -104,27 +108,27 @@ class _ProductItemMobileViewState extends State<ProductItemMobileView> {
                   Text(
                     'KD12.00 ',
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 2.8.sp,
                       fontWeight: FontWeight.bold,
                       color: kBorderColor,
                     ),
                   ),
                   Text(
                     ' KD14.00',
-                    style: TextStyle(fontSize: 17, color: kOfferColor),
+                    style: TextStyle(fontSize: 2.8.sp, color: kOfferColor),
                   ),
                 ],
               ),
 
               Text(
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
-                style: TextStyle(fontSize: 16, color: kBorderColor),
+                style: TextStyle(fontSize: 3.sp, color: kBorderColor),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 5, bottom: 5),
                 child: Text(
                   'Sell Per : Kartoon',
-                  style: TextStyle(fontSize: 16, color: kBorderColor),
+                  style: TextStyle(fontSize: 3.sp, color: kBorderColor),
                 ),
               ),
 
@@ -154,7 +158,10 @@ class _ProductItemMobileViewState extends State<ProductItemMobileView> {
                                 selectedWeight = value;
                               });
                             },
-                            child: Text('50 Gram - 4.00 KD'),
+                            child: Text(
+                              '50 Gram - 4.00 KD',
+                              style: TextStyle(fontSize: 3.sp),
+                            ),
                           ),
                           RadioMenuButton<String>(
                             value: '100g',
@@ -164,7 +171,10 @@ class _ProductItemMobileViewState extends State<ProductItemMobileView> {
                                 selectedWeight = value;
                               });
                             },
-                            child: Text('100 Gram - 7.50 KD'),
+                            child: Text(
+                              '100 Gram - 7.50 KD',
+                              style: TextStyle(fontSize: 3.sp),
+                            ),
                           ),
                           RadioMenuButton<String>(
                             value: '200g',
@@ -174,7 +184,10 @@ class _ProductItemMobileViewState extends State<ProductItemMobileView> {
                                 selectedWeight = value;
                               });
                             },
-                            child: Text('200 Gram - 7.50 KD'),
+                            child: Text(
+                              '200 Gram - 7.50 KD',
+                              style: TextStyle(fontSize: 3.sp),
+                            ),
                           ),
                         ],
                       ),
@@ -207,7 +220,10 @@ class _ProductItemMobileViewState extends State<ProductItemMobileView> {
                                 selectedAddons = value;
                               });
                             },
-                            child: Text('50 Gram - 4.00 KD'),
+                            child: Text(
+                              '50 Gram - 4.00 KD',
+                              style: TextStyle(fontSize: 3.sp),
+                            ),
                           ),
                           RadioMenuButton<String>(
                             value: '100g',
@@ -217,7 +233,10 @@ class _ProductItemMobileViewState extends State<ProductItemMobileView> {
                                 selectedAddons = value;
                               });
                             },
-                            child: Text('100 Gram - 7.50 KD'),
+                            child: Text(
+                              '100 Gram - 7.50 KD',
+                              style: TextStyle(fontSize: 3.sp),
+                            ),
                           ),
                         ],
                       ),
@@ -227,8 +246,8 @@ class _ProductItemMobileViewState extends State<ProductItemMobileView> {
                 child: Align(
                   alignment: AlignmentGeometry.bottomRight,
                   child: SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.4,
-                    height: MediaQuery.of(context).size.height * 0.05,
+                    width: 40.w,
+                    height: 5.h,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: kPrimaryColor,
@@ -239,13 +258,13 @@ class _ProductItemMobileViewState extends State<ProductItemMobileView> {
                         children: [
                           Icon(
                             Icons.shopping_basket_outlined,
-                            size: 18,
+                            size: 4.sp,
                             color: Colors.white,
                           ),
                           Text(
                             'Add To Cart',
                             style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 3.sp,
                               fontWeight: FontWeight.w600,
                               color: Colors.white,
                             ),

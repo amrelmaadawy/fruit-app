@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_app/core/responsive/size_config.dart';
 import 'package:fruit_app/core/utils/app_size.dart';
 
 class CustomHomeItem extends StatelessWidget {
@@ -12,11 +13,7 @@ class CustomHomeItem extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.all(1.0),
-        child: Image.asset(
-          imagePath,
-          width: MediaQuery.of(context).size.width * 0.2,
-          height: MediaQuery.of(context).size.width * 0.2,
-        ),
+        child: Image.asset(imagePath, width: 20.w, height: 12.h),
       ),
     );
   }
