@@ -19,7 +19,7 @@ class ResponsiveLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     final orientation = MediaQuery.of(context).orientation;
 
-    if (Responsive.isDesktop(context)) {
+    if (Responsive.isWeb(context)) {
       return orientation == Orientation.landscape
           ? (desktopLandscape ?? desktop)
           : desktop;

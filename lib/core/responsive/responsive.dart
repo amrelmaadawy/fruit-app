@@ -2,15 +2,21 @@ import 'package:flutter/material.dart';
 
 enum DeviceType { mobile, desktop }
 
+
 class Responsive {
-  static DeviceType getDeviceType(double width) {
-    if (width >= 1000) return DeviceType.desktop;
-    return DeviceType.mobile;
-  }
+  static bool isMobile(BuildContext context) =>
+      MediaQuery.of(context).size.width < 600;
 
+  static bool isTablet(BuildContext context) =>
+      MediaQuery.of(context).size.width >= 600 &&
+      MediaQuery.of(context).size.width < 1024;
 
-  static bool isMobile(context) =>
-      getDeviceType(MediaQuery.of(context).size.width) == DeviceType.mobile;
-      static bool isDesktop(context) =>
-      getDeviceType(MediaQuery.of(context).size.width) == DeviceType.desktop;
+  static bool isWeb(BuildContext context) =>
+      MediaQuery.of(context).size.width >= 1024;
+
+  static bool isPortrait(BuildContext context) =>
+      MediaQuery.of(context).orientation == Orientation.portrait;
+
+  static bool isLandscape(BuildContext context) =>
+      MediaQuery.of(context).orientation == Orientation.landscape;
 }
