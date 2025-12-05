@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/responsive/size_config.dart';
 import 'package:fruit_app/core/utils/app_colors.dart';
+import 'package:fruit_app/core/utils/app_size.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({
@@ -8,32 +9,39 @@ class CustomElevatedButton extends StatelessWidget {
     required this.onPressed,
     required this.text,
   });
+  
   final void Function() onPressed;
   final String text;
+  
   @override
   Widget build(BuildContext context) {
-    bool isWeb = MediaQuery.of(context).size.width >= 1024;
-    final orientation = MediaQuery.of(context).orientation;
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        bool isWeb = constraints.maxWidth >= 1024;
+        bool isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
 
-    return SizedBox(
-      width: double.infinity,
-      height: isWeb
-          ? 50
-          : orientation == Orientation.landscape
-          ? 40
-          : 5.h,
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(backgroundColor: kPrimaryColor),
-        child: Text(
-          text,
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w600,
-            fontSize: isWeb ? 22 : 4.sp,
+        return SizedBox(
+          width: double.infinity,
+          height: isWeb ? 50 : (isLandscape ? 45 : 5.h),
+          child: ElevatedButton(
+            onPressed: onPressed,
+            style: ElevatedButton.styleFrom(
+              backgroundColor: kPrimaryColor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(kDefBorderRaduis),
+              ),
+            ),
+            child: Text(
+              text,
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w600,
+                fontSize: isWeb ? 22 : (isLandscape ? 18 : 4.sp),
+              ),
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

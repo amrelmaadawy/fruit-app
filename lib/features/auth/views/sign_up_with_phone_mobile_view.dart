@@ -6,33 +6,40 @@ import 'package:fruit_app/core/responsive/size_config.dart';
 import 'package:fruit_app/core/utils/app_colors.dart';
 import 'package:fruit_app/core/utils/app_size.dart';
 import 'package:fruit_app/features/auth/views/login_mobile_view.dart';
-
 class SignUpWithPhoneView extends StatefulWidget {
   const SignUpWithPhoneView({super.key});
 
   @override
-  State<SignUpWithPhoneView> createState() =>
-      _SignUpWithPhoneViewState();
+  State<SignUpWithPhoneView> createState() => _SignUpWithPhoneViewState();
 }
 
 class _SignUpWithPhoneViewState extends State<SignUpWithPhoneView> {
   TextEditingController fullNameController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    bool isWeb = MediaQuery.of(context).size.width >= 1024;
-
     return Scaffold(
       appBar: AppBar(),
       body: LayoutBuilder(
         builder: (context, constraints) {
+          bool isWeb = constraints.maxWidth >= 1024;
+          bool isLandscape = constraints.maxWidth > constraints.maxHeight;
+          
+          double containerWidth = isWeb 
+              ? 600 
+              : (isLandscape ? constraints.maxWidth * 0.7 : constraints.maxWidth * 0.9);
+
           return Center(
             child: SizedBox(
-              width: isWeb ? 600 : 90.w,
+              width: containerWidth,
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: EdgeInsets.all(kDefAuthPadding),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: isWeb ? 32 : (isLandscape ? 40 : kDefAuthPadding),
+                    vertical: isWeb ? 32 : (isLandscape ? 20 : kDefAuthPadding),
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -41,18 +48,21 @@ class _SignUpWithPhoneViewState extends State<SignUpWithPhoneView> {
                         style: TextStyle(
                           color: kPrimaryColor,
                           fontWeight: FontWeight.bold,
-                          fontSize: isWeb ? 42 : 10.sp,
+                          fontSize: isWeb ? 42 : (isLandscape ? 32 : 10.sp),
                         ),
                       ),
-                      SizedBox(height: isWeb ? 10 : 1.5.h),
+                      SizedBox(height: isLandscape ? 8 : (isWeb ? 10 : 1.5.h)),
+                      
                       Text(
                         'Sign Up to Wikala',
                         style: TextStyle(
-                          fontSize: isWeb ? 32 : 6.sp,
+                          fontSize: isWeb ? 32 : (isLandscape ? 24 : 6.sp),
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: isWeb ? 10 : 1.h),
+                      
+                      SizedBox(height: isLandscape ? 15 : (isWeb ? 10 : 1.h)),
+                      
                       CustomTextFormField(
                         controller: fullNameController,
                         text: 'Full Name *',
@@ -62,9 +72,11 @@ class _SignUpWithPhoneViewState extends State<SignUpWithPhoneView> {
                         },
                         keyboardType: TextInputType.text,
                       ),
-                      SizedBox(height: isWeb ? 10 : 1.h),
+                      
+                      SizedBox(height: isLandscape ? 10 : (isWeb ? 10 : 1.h)),
+                      
                       CustomTextFormField(
-                        controller: passwordController,
+                        controller: phoneController,
                         text: 'Phone Number With Whatsapp *',
                         labelText: 'Mobile Number',
                         validator: (String? p1) {
@@ -72,7 +84,9 @@ class _SignUpWithPhoneViewState extends State<SignUpWithPhoneView> {
                         },
                         keyboardType: TextInputType.number,
                       ),
-                      SizedBox(height: isWeb ? 10 : 1.h),
+                      
+                      SizedBox(height: isLandscape ? 10 : (isWeb ? 10 : 1.h)),
+                      
                       CustomTextFormField(
                         obscureText: true,
                         controller: passwordController,
@@ -83,15 +97,19 @@ class _SignUpWithPhoneViewState extends State<SignUpWithPhoneView> {
                         },
                         keyboardType: TextInputType.text,
                       ),
-                      SizedBox(height: isWeb ? 22 : 1.5.h),
+                      
+                      SizedBox(height: isLandscape ? 15 : (isWeb ? 22 : 1.5.h)),
+                      
                       CustomElevatedButton(onPressed: () {}, text: 'Sign Up'),
-                      SizedBox(height: isWeb ? 22 : 1.5.h),
+                      
+                      SizedBox(height: isLandscape ? 12 : (isWeb ? 22 : 1.5.h)),
+                      
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'Already have an account?|',
-                            style: TextStyle(fontSize: isWeb ? 22 : 3.5.sp),
+                            'Already have an account? |',
+                            style: TextStyle(fontSize: isWeb ? 22 : (isLandscape ? 16 : 3.5.sp)),
                           ),
                           CustomTextButton(
                             text: 'Login',

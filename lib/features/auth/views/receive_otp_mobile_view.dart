@@ -10,84 +10,109 @@ class RecevieOtpView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isWeb = MediaQuery.of(context).size.width >= 1024;
-
     return Scaffold(
       appBar: AppBar(),
-      body: Center(
-        child: SizedBox(
-          width: isWeb ? 600 : 90.w,
-          child: Padding(
-            padding: EdgeInsets.all(kDefAuthPadding),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Fruit Market',
-                  style: TextStyle(
-                    color: kPrimaryColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: isWeb ? 42 : 10.sp,
-                  ),
-                ),
-                SizedBox(height:isWeb?20: 2.h),
-                Text(
-                  'Enter Recived OTP',
-                  style: TextStyle(
-                    fontSize: isWeb ? 32 : 7.sp,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          bool isWeb = constraints.maxWidth >= 1024;
+          bool isLandscape = constraints.maxWidth > constraints.maxHeight;
+          
+          double containerWidth = isWeb 
+              ? 600 
+              : (isLandscape ? constraints.maxWidth * 0.6 : constraints.maxWidth * 0.9);
 
-                SizedBox(height: isWeb ? 20 : 2.h),
-                PinCodeTextField(
-                  appContext: context,
-                  pinTheme: PinTheme(
-                    fieldWidth:isWeb?42: 10.sp,
-                    borderRadius: BorderRadius.circular(kDefBorderRaduis),
-                    shape: PinCodeFieldShape.circle,
-
-                    inactiveColor: kBorderColor,
+          return Center(
+            child: SizedBox(
+              width: containerWidth,
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: isWeb ? 32 : (isLandscape ? 40 : kDefAuthPadding),
+                    vertical: isWeb ? 32 : (isLandscape ? 20 : kDefAuthPadding),
                   ),
-                  length: 4,
-                  onChanged: (value) {},
-                ),
-                SizedBox(height: isWeb ? 20 : 2.h),
-                CustomElevatedButton(
-                  onPressed: () {
-                    // Navigator.pop(context);
-                  },
-                  text: 'Submit',
-                ),
-
-                Text(
-                  '60',
-                  style: TextStyle(
-                    fontSize:isWeb?50: 7.sp,
-                    fontWeight: FontWeight.bold,
-                    color: kBorderColor,
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('Not received?', style: TextStyle(fontSize:isWeb?20: 3.5.sp)),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        'Send Again',
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Fruit Market',
                         style: TextStyle(
-                          color: kTextButtonColor,
-                          fontSize:isWeb?20: 3.5.sp,
+                          color: kPrimaryColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: isWeb ? 42 : (isLandscape ? 32 : 10.sp),
                         ),
                       ),
-                    ),
-                  ],
+                      
+                      SizedBox(height: isLandscape ? 10 : (isWeb ? 20 : 2.h)),
+                      
+                      Text(
+                        'Enter Received OTP',
+                        style: TextStyle(
+                          fontSize: isWeb ? 32 : (isLandscape ? 24 : 7.sp),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+
+                      SizedBox(height: isLandscape ? 20 : (isWeb ? 20 : 2.h)),
+                      
+                      PinCodeTextField(
+                        appContext: context,
+                        pinTheme: PinTheme(
+                          fieldWidth: isWeb ? 50 : (isLandscape ? 45 : 10.sp),
+                          fieldHeight: isWeb ? 50 : (isLandscape ? 45 : 10.sp),
+                          borderRadius: BorderRadius.circular(kDefBorderRaduis),
+                          shape: PinCodeFieldShape.box,
+                          inactiveColor: kBorderColor,
+                          activeColor: kPrimaryColor,
+                          selectedColor: kPrimaryColor,
+                        ),
+                        length: 4,
+                        onChanged: (value) {},
+                      ),
+                      
+                      SizedBox(height: isLandscape ? 20 : (isWeb ? 20 : 2.h)),
+                      
+                      CustomElevatedButton(
+                        onPressed: () {},
+                        text: 'Submit',
+                      ),
+
+                      SizedBox(height: isLandscape ? 15 : (isWeb ? 20 : 2.h)),
+
+                      Text(
+                        '60',
+                        style: TextStyle(
+                          fontSize: isWeb ? 50 : (isLandscape ? 40 : 7.sp),
+                          fontWeight: FontWeight.bold,
+                          color: kBorderColor,
+                        ),
+                      ),
+                      
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Not received?',
+                            style: TextStyle(fontSize: isWeb ? 20 : (isLandscape ? 16 : 3.5.sp)),
+                          ),
+                          TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              'Send Again',
+                              style: TextStyle(
+                                color: kTextButtonColor,
+                                fontSize: isWeb ? 20 : (isLandscape ? 16 : 3.5.sp),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              ],
+              ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }

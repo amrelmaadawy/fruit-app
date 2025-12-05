@@ -24,57 +24,77 @@ class CustomTextFormField extends StatelessWidget {
   final Widget? suffixIcon;
   final Widget? prefixIcon;
   final bool obscureText;
+  
   @override
   Widget build(BuildContext context) {
-    bool isWeb = MediaQuery.of(context).size.width >= 1024;
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        bool isWeb = constraints.maxWidth >= 1024;
+        bool isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        text == ''
-            ? SizedBox()
-            : Text(
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (text.isNotEmpty)
+              Text(
                 text,
                 style: TextStyle(
-                  fontSize: isWeb ? 20 : 3.5.sp,
+                  fontSize: isWeb ? 20 : (isLandscape ? 16 : 3.5.sp),
                   fontWeight: FontWeight.w600,
                   color: kSubTextColor,
                 ),
               ),
-        SizedBox(height: isWeb ? 20 : 1.h),
-        TextFormField(
-          obscureText: obscureText,
-          controller: controller,
-          validator: validator,
-          keyboardType: keyboardType,
-          cursorColor: kPrimaryColor,
-          decoration: InputDecoration(
-            prefixIcon: prefixIcon,
-            suffixIcon: suffixIcon,
-            labelText: labelText,
-            labelStyle: TextStyle(fontSize: isWeb ? 18 : 3.sp),
-            filled: true,
-            fillColor: Colors.white,
-            contentPadding: EdgeInsets.symmetric(
-              horizontal: isWeb ? 16 : 1.5.sp,
-              vertical: isWeb ? 16 : 1.5.sp,
+            
+            if (text.isNotEmpty)
+              SizedBox(height: isWeb ? 12 : (isLandscape ? 8 : 1.h)),
+            
+            TextFormField(
+              obscureText: obscureText,
+              controller: controller,
+              validator: validator,
+              keyboardType: keyboardType,
+              cursorColor: kPrimaryColor,
+              style: TextStyle(
+                fontSize: isWeb ? 18 : (isLandscape ? 15 : 3.5.sp),
+              ),
+              decoration: InputDecoration(
+                prefixIcon: prefixIcon,
+                suffixIcon: suffixIcon,
+                labelText: labelText,
+                labelStyle: TextStyle(
+                  fontSize: isWeb ? 18 : (isLandscape ? 14 : 3.sp),
+                ),
+                filled: true,
+                fillColor: Colors.white,
+                contentPadding: EdgeInsets.symmetric(
+                  horizontal: isWeb ? 16 : (isLandscape ? 14 : 1.5.sp),
+                  vertical: isWeb ? 16 : (isLandscape ? 12 : 1.5.sp),
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(kDefBorderRaduis),
+                  borderSide: BorderSide(color: kSubTextColor),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(kDefBorderRaduis),
+                  borderSide: BorderSide(color: kSubTextColor),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: kPrimaryColor, width: 2),
+                  borderRadius: BorderRadius.circular(kDefBorderRaduis),
+                ),
+                errorBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.red),
+                  borderRadius: BorderRadius.circular(kDefBorderRaduis),
+                ),
+                focusedErrorBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.red, width: 2),
+                  borderRadius: BorderRadius.circular(kDefBorderRaduis),
+                ),
+              ),
             ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(kDefBorderRaduis),
-              borderSide: BorderSide(color: kSubTextColor),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(kDefBorderRaduis),
-              borderSide: BorderSide(color: kSubTextColor),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: kSubTextColor),
-
-              borderRadius: BorderRadius.circular(kDefBorderRaduis),
-            ),
-          ),
-        ),
-      ],
+          ],
+        );
+      },
     );
   }
 }
