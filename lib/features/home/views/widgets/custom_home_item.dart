@@ -7,13 +7,15 @@ class CustomHomeItem extends StatelessWidget {
   final String imagePath;
   @override
   Widget build(BuildContext context) {
+    final bool isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
+
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadiusGeometry.circular(kDefBorderRaduis),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(1.0),
-        child: Image.asset(imagePath, width: 20.w, height: 12.h),
+        padding: const EdgeInsets.all(3.0),
+        child: Image.asset(imagePath, width:isLandscape?8.w: 20.w, height: 12.h),
       ),
     );
   }

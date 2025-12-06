@@ -9,13 +9,34 @@ class SellerItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-
     final bool isWeb = width > 1024;
+    final bool isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
 
-final double avatarRadius = isWeb ? 40 : 6.w;
-    final double titleFont = isWeb ? 22 : 4.sp;
-    final double smallFont = isWeb ? 16 : 3.sp;
-    final double iconSize = isWeb ? 26 : 5.sp;
+    final double avatarRadius = isWeb
+        ? 40
+        : isLandscape
+        ? 3.w
+        : 6.w;
+
+    final double titleFont = isWeb
+        ? 22
+        : isLandscape
+        ? 2.5.sp
+        : 4.sp;
+
+    final double smallFont = isWeb
+        ? 16
+        : isLandscape
+        ? 1.5.sp
+        : 3.sp;
+
+    final double iconSize = isWeb
+        ? 26
+        : isLandscape
+        ? 3.5.sp
+        : 5.sp;
+
     return Card(
       elevation: 3,
       shape: RoundedRectangleBorder(
