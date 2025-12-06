@@ -52,7 +52,7 @@ class SellerItem extends StatelessWidget {
               child: Image.asset('assets/images/companyLogo.png'),
             ),
 
-            const SizedBox(width: 12),
+             SizedBox(width: 2.w),
 
             Expanded(
               child: Column(
@@ -81,7 +81,7 @@ class SellerItem extends StatelessWidget {
                     ],
                   ),
 
-                  const SizedBox(height: 4),
+                   SizedBox(height: 1.h),
 
                   Row(
                     children: [
@@ -90,7 +90,7 @@ class SellerItem extends StatelessWidget {
                         color: kPrimaryColor,
                         size: iconSize,
                       ),
-                      const SizedBox(width: 5),
+                       SizedBox(width: 1.w),
                       Expanded(
                         child: Text(
                           'Delivery Charges : 0.5 KD',
@@ -103,7 +103,7 @@ class SellerItem extends StatelessWidget {
                     ],
                   ),
 
-                  const SizedBox(height: 4),
+                   SizedBox(height: 1.h),
 
                   Row(
                     children: [
@@ -114,7 +114,7 @@ class SellerItem extends StatelessWidget {
                           fontSize: smallFont,
                         ),
                       ),
-                      const SizedBox(width: 8),
+                       SizedBox(width: 1.5.w),
 
                       Text(
                         'Beverages',

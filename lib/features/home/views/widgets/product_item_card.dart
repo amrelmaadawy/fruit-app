@@ -10,16 +10,58 @@ class ProductItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+
+    final isLandscape = width > height;
     final bool isWeb = width > 600;
 
-    final double cardHeight = isWeb ? 180 : 15.h;
-    final double imageRadius = isWeb ? 50 : 10.w;
-    final double titleFont = isWeb ? 20 : 4.sp;
-    final double priceFont = isWeb ? 16 : 2.8.sp;
-    final double buttonRadius = isWeb ? 35 : 6.w;
-    final double iconSize = isWeb ? 24 : 5.5.sp;
-    final double offerHeight = isWeb ? 35 : 3.h;
-    final double offerWidth = isWeb ? 140 : 25.w;
+    final double cardHeight = isWeb
+        ? 180
+        : isLandscape
+            ? 10.h
+            : 15.h;
+
+    final double imageRadius = isWeb
+        ? 50
+        : isLandscape
+            ? 7.w
+            : 10.w;
+
+    final double titleFont = isWeb
+        ? 20
+        : isLandscape
+            ? 3.sp
+            : 4.sp;
+
+    final double priceFont = isWeb
+        ? 16
+        : isLandscape
+            ? 2.3.sp
+            : 2.8.sp;
+
+    final double buttonRadius = isWeb
+        ? 35
+        : isLandscape
+            ? 4.5.w
+            : 6.w;
+
+    final double iconSize = isWeb
+        ? 24
+        : isLandscape
+            ? 4.2.sp
+            : 5.5.sp;
+
+    final double offerHeight = isWeb
+        ? 35
+        : isLandscape
+            ? 2.h
+            : 3.h;
+
+    final double offerWidth = isWeb
+        ? 140
+        : isLandscape
+            ? 18.w
+            : 25.w;
 
     return SizedBox(
       height: cardHeight,
@@ -109,7 +151,6 @@ class ProductItemCard extends StatelessWidget {
                 ),
               ),
 
-              // ---------------- Add to Cart Button ----------------
               GestureDetector(
                 onTap: () {
                   Navigator.push(
