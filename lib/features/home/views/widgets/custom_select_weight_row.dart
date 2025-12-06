@@ -4,11 +4,18 @@ import 'package:fruit_app/core/utils/app_colors.dart';
 import 'package:fruit_app/core/utils/app_size.dart';
 
 class CustomSelectWeightRow extends StatelessWidget {
-  const CustomSelectWeightRow({super.key, required this.onTap, required this.title});
+  const CustomSelectWeightRow({
+    super.key,
+    required this.onTap,
+    required this.title,
+  });
   final void Function() onTap;
   final String title;
   @override
   Widget build(BuildContext context) {
+    final bool isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
+
     return GestureDetector(
       onTap: onTap,
       child: Card(
@@ -21,14 +28,14 @@ class CustomSelectWeightRow extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-              title,
+                title,
                 style: TextStyle(
-                  fontSize: 3.5.sp,
+                  fontSize: isLandscape ? 1.8.sp : 3.5.sp,
                   fontWeight: FontWeight.bold,
                   color: kBlackColor,
                 ),
               ),
-              Icon(Icons.expand_more_outlined,size: 5.sp,),
+              Icon(Icons.expand_more_outlined, size: isLandscape ? 3.sp : 5.sp),
             ],
           ),
         ),
