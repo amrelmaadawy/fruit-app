@@ -8,8 +8,10 @@ class BasketProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
     return SizedBox(
-      height: 18.h,
+      height: isLandscape ? 28.h : 18.h,
       child: Card(
         color: Colors.white,
         elevation: 2,
@@ -22,7 +24,7 @@ class BasketProductItem extends StatelessWidget {
             children: [
               CircleAvatar(
                 backgroundColor: Colors.white,
-                radius: 10.sp,
+                radius: isLandscape ? 3.sp : 10.sp,
                 child: Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadiusGeometry.circular(
@@ -39,7 +41,7 @@ class BasketProductItem extends StatelessWidget {
                   Text(
                     'Product Name',
                     style: TextStyle(
-                      fontSize: 4.sp,
+                      fontSize: isLandscape ? 1.5.sp : 4.sp,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -47,13 +49,16 @@ class BasketProductItem extends StatelessWidget {
                     children: [
                       Text(
                         '12.00 KD',
-                        style: TextStyle(fontSize: 3.6.sp, color: kBorderColor),
+                        style: TextStyle(
+                          fontSize: isLandscape ? 1.3.sp : 3.6.sp,
+                          color: kBorderColor,
+                        ),
                       ),
-                      SizedBox(width: 5.w),
+                      SizedBox(width: isLandscape ? 1.w : 5.w),
                       Text(
                         '14.00 KD',
                         style: TextStyle(
-                          fontSize: 4.sp,
+                          fontSize: isLandscape ? 1.5.sp : 4.sp,
                           color: Colors.grey.shade400,
                         ),
                       ),
@@ -68,7 +73,7 @@ class BasketProductItem extends StatelessWidget {
                     child: Text(
                       'Up to 10 % Off',
                       style: TextStyle(
-                        fontSize: 3.sp,
+                        fontSize: isLandscape ? 1.2.sp : 3.sp,
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
                       ),
@@ -81,7 +86,10 @@ class BasketProductItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(Icons.delete_forever_outlined, size: 5.5.sp),
+                  Icon(
+                    Icons.delete_forever_outlined,
+                    size: isLandscape ? 3.sp : 5.5.sp,
+                  ),
 
                   Card(
                     color: Colors.white,
@@ -95,12 +103,23 @@ class BasketProductItem extends StatelessWidget {
                       children: [
                         IconButton(
                           onPressed: () {},
-                          icon: Icon(Icons.remove, size: 5.5.sp),
+                          icon: Icon(
+                            Icons.remove,
+                            size: isLandscape ? 2.sp : 5.5.sp,
+                          ),
                         ),
-                        Text('2', style: TextStyle(fontSize: 3.sp)),
+                        Text(
+                          '2',
+                          style: TextStyle(
+                            fontSize: isLandscape ? 1.8.sp : 3.sp,
+                          ),
+                        ),
                         IconButton(
                           onPressed: () {},
-                          icon: Icon(Icons.add, size: 5.5.sp),
+                          icon: Icon(
+                            Icons.add,
+                            size: isLandscape ? 2.sp : 5.5.sp,
+                          ),
                         ),
                       ],
                     ),

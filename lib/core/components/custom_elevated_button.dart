@@ -9,16 +9,17 @@ class CustomElevatedButton extends StatelessWidget {
     required this.onPressed,
     required this.text,
   });
-  
+
   final void Function() onPressed;
   final String text;
-  
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        bool isWeb = constraints.maxWidth >= 1024;
-        bool isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
+        bool isWeb = constraints.maxWidth >= 900;
+        bool isLandscape =
+            MediaQuery.of(context).orientation == Orientation.landscape;
 
         return SizedBox(
           width: double.infinity,
