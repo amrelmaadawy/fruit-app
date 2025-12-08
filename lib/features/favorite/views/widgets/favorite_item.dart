@@ -9,15 +9,38 @@ class FavoriteItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    final bool isWeb = width > 600;
+    bool isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
 
-    final double cardHeight = isWeb ? 180 : 15.h;
-    final double imageRadius = isWeb ? 50 : 10.w;
-    final double titleFont = isWeb ? 20 : 4.sp;
-    final double priceFont = isWeb ? 16 : 3.sp;
+    final bool isWeb = width > 1000;
+
+    final double cardHeight = isWeb
+        ? 180
+        : isLandscape
+        ? 30.h
+        : 15.h;
+    final double imageRadius = isWeb
+        ? 50
+        : isLandscape
+        ? 4.w
+        : 10.w;
+    final double titleFont = isWeb
+        ? 20
+        : isLandscape
+        ? 2.sp
+        : 4.sp;
+    final double priceFont = isWeb
+        ? 16
+        : isLandscape
+        ? 1.7.sp
+        : 3.sp;
     final double buttonRadius = isWeb ? 35 : 6.w;
-    final double iconSize = isWeb ? 24 : 5.5.sp;
-    
+    final double iconSize = isWeb
+        ? 24
+        : isLandscape
+        ? 3.sp
+        : 5.5.sp;
+
     return SizedBox(
       height: cardHeight,
       child: Card(
@@ -85,8 +108,6 @@ class FavoriteItem extends StatelessWidget {
                     ),
 
                     SizedBox(
-                      
-
                       child: Text(
                         'Store Name: Store 1',
                         style: TextStyle(

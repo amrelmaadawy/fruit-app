@@ -9,12 +9,15 @@ class FavoriteView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
+
     return Column(
       children: [
         Text(
           'Favorite View',
           style: TextStyle(
-            fontSize: 5.sp,
+            fontSize: isLandscape ? 2.5.sp : 5.sp,
             fontWeight: FontWeight.bold,
             color: kPrimaryColor,
           ),
