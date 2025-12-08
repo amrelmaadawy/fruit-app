@@ -12,21 +12,22 @@ class CustomSignInElevationButton extends StatelessWidget {
     required this.textColor,
     this.iconColor,
   });
-  
+
   final String text;
   final Color color;
   final Color textColor;
   final Color? iconColor;
   final void Function() onPressed;
   final Widget widget;
-  
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
         bool isWeb = constraints.maxWidth >= 1024;
-        bool isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
-        
+        bool isLandscape =
+            MediaQuery.of(context).orientation == Orientation.landscape;
+
         return ElevatedButton(
           style: ElevatedButton.styleFrom(
             elevation: 2,
@@ -41,11 +42,11 @@ class CustomSignInElevationButton extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(child: widget),
-              SizedBox(width: isWeb ? 22 : (isLandscape ? 16 : 3.w)),
+              SizedBox(width: isWeb ? 22 : (isLandscape ? 2.w : 3.w)),
               Text(
                 text,
                 style: TextStyle(
-                  fontSize: isWeb ? 22 : (isLandscape ? 16 : 3.sp),
+                  fontSize: isWeb ? 22 : (isLandscape ? 2.sp : 3.sp),
                   color: textColor,
                 ),
               ),

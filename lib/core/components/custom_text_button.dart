@@ -8,23 +8,24 @@ class CustomTextButton extends StatelessWidget {
     required this.text,
     required this.destination,
   });
-  
+
   final String text;
   final Widget destination;
-  
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
         bool isWeb = constraints.maxWidth >= 1024;
-        bool isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
+        bool isLandscape =
+            MediaQuery.of(context).orientation == Orientation.landscape;
 
         return TextButton(
           child: Text(
             text,
             style: TextStyle(
               color: kTextButtonColor,
-              fontSize: isWeb ? 22 : (isLandscape ? 16 : 3.5.sp),
+              fontSize: isWeb ? 22 : (isLandscape ? 2.sp : 3.4.sp),
             ),
           ),
           onPressed: () {

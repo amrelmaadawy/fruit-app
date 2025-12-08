@@ -44,7 +44,6 @@ class _OnboardingViewState extends State<OnboardingView> {
             double topPadding = isPortrait ? 20 : 10;
 
             return Scaffold(
-              appBar: AppBar(),
               body: SafeArea(
                 child: Padding(
                   padding: EdgeInsets.all(isPortrait ? kDefAuthPadding : 12),
