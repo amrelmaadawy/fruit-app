@@ -24,13 +24,14 @@ class CustomTextFormField extends StatelessWidget {
   final Widget? suffixIcon;
   final Widget? prefixIcon;
   final bool obscureText;
-  
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
         bool isWeb = constraints.maxWidth >= 1024;
-        bool isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
+        bool isLandscape =
+            MediaQuery.of(context).orientation == Orientation.landscape;
 
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,15 +40,15 @@ class CustomTextFormField extends StatelessWidget {
               Text(
                 text,
                 style: TextStyle(
-                  fontSize: isWeb ? 20 : (isLandscape ? 16 : 3.5.sp),
+                  fontSize: isWeb ? 20 : (isLandscape ? 2.sp : 3.5.sp),
                   fontWeight: FontWeight.w600,
                   color: kSubTextColor,
                 ),
               ),
-            
+
             if (text.isNotEmpty)
-              SizedBox(height: isWeb ? 12 : (isLandscape ? 8 : 1.h)),
-            
+              SizedBox(height: isWeb ? 12 : (isLandscape ? 1.h : 1.h)),
+
             TextFormField(
               obscureText: obscureText,
               controller: controller,
@@ -55,20 +56,20 @@ class CustomTextFormField extends StatelessWidget {
               keyboardType: keyboardType,
               cursorColor: kPrimaryColor,
               style: TextStyle(
-                fontSize: isWeb ? 18 : (isLandscape ? 15 : 3.5.sp),
+                fontSize: isWeb ? 18 : (isLandscape ? 2.sp : 3.5.sp),
               ),
               decoration: InputDecoration(
                 prefixIcon: prefixIcon,
                 suffixIcon: suffixIcon,
                 labelText: labelText,
                 labelStyle: TextStyle(
-                  fontSize: isWeb ? 18 : (isLandscape ? 14 : 3.sp),
+                  fontSize: isWeb ? 18 : (isLandscape ? 1.4.sp : 3.sp),
                 ),
                 filled: true,
                 fillColor: Colors.white,
                 contentPadding: EdgeInsets.symmetric(
-                  horizontal: isWeb ? 16 : (isLandscape ? 14 : 1.5.sp),
-                  vertical: isWeb ? 16 : (isLandscape ? 12 : 1.5.sp),
+                  horizontal: isWeb ? 2.sp : (isLandscape ? 14 : 1.5.sp),
+                  vertical: isWeb ? 2.sp : (isLandscape ? 12 : 1.5.sp),
                 ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(kDefBorderRaduis),

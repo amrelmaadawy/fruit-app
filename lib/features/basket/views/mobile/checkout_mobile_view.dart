@@ -5,9 +5,9 @@ import 'package:fruit_app/core/utils/app_colors.dart';
 import 'package:fruit_app/core/utils/app_size.dart';
 import 'package:fruit_app/features/basket/views/mobile/checkout_confirmed_mobile_view.dart';
 import 'package:fruit_app/features/basket/views/mobile/widgets/custom_page_indicator.dart';
-import 'package:fruit_app/features/basket/views/mobile/widgets/payment_mobile_view.dart';
-import 'package:fruit_app/features/basket/views/mobile/widgets/select_address_mobile_view.dart';
-import 'package:fruit_app/features/basket/views/mobile/widgets/select_date_mobile_view.dart';
+import 'package:fruit_app/features/basket/views/payment_view.dart';
+import 'package:fruit_app/features/basket/views/select_address_view.dart';
+import 'package:fruit_app/features/basket/views/select_data_view.dart';
 
 class CheckoutMobileView extends StatefulWidget {
   const CheckoutMobileView({super.key});
@@ -57,9 +57,9 @@ class _CheckoutMobileViewState extends State<CheckoutMobileView> {
                   );
                 },
               ),
-              
+
               const SizedBox(height: 16),
-              
+
               Expanded(
                 flex: 7,
                 child: PageView(
@@ -71,15 +71,15 @@ class _CheckoutMobileViewState extends State<CheckoutMobileView> {
                   },
                   controller: pageController,
                   children: const [
-                    SelectDateMobileView(),
-                    SelectAddressMobileView(),
-                    PaymentMobileView(),
+                    SelectDateView(),
+                    SelectAddressView(),
+                    PaymentView(),
                   ],
                 ),
               ),
-              
+
               const SizedBox(height: 16),
-              
+
               SizedBox(
                 height: 6.h,
                 child: CustomElevatedButton(
@@ -88,7 +88,8 @@ class _CheckoutMobileViewState extends State<CheckoutMobileView> {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const CheckoutConfirmedMobileView(),
+                          builder: (context) =>
+                              const CheckoutConfirmedMobileView(),
                         ),
                       );
                     } else {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fruit_app/core/responsive/responsive_layout.dart';
 import 'package:fruit_app/features/basket/views/desktop/checkout_desktop_view.dart';
 import 'package:fruit_app/features/basket/views/mobile/checkout_mobile_view.dart';
+import 'package:fruit_app/features/basket/views/mobile_landscape/checkout_mobile_landscape_view.dart';
 
 class CheckoutView extends StatelessWidget {
   const CheckoutView({super.key});
@@ -11,6 +12,7 @@ class CheckoutView extends StatelessWidget {
     return ResponsiveLayout(
       mobile: CheckoutMobileView(),
       desktop: CheckoutDesktopView(),
+      mobileLandscape: CheckoutMobileLandscapeView(),
     );
   }
 }
