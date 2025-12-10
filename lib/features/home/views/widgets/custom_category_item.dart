@@ -33,6 +33,7 @@ class CustomCategoryItem extends StatelessWidget {
       child: Column(
         children: [
           Card(
+            color: Colors.white,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadiusGeometry.circular(kDefBorderRaduis),
             ),

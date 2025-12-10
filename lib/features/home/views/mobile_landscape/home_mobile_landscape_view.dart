@@ -38,9 +38,12 @@ class HomeMobileLandscapeView extends StatelessWidget {
                     IconButton(
                       onPressed: () {
                         showDialog(
+                          barrierDismissible: true,
+
+                          useSafeArea: false,
                           context: context,
                           builder: (context) {
-                            return FilterCard();
+                            return AlertDialog(content: FilterCard());
                           },
                         );
                       },

@@ -79,6 +79,7 @@ class ProductItemCard extends StatelessWidget {
                 backgroundColor: Colors.white,
                 radius: imageRadius,
                 child: Card(
+                  color: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(kDefBorderRaduis),
                   ),

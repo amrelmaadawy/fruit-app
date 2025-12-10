@@ -19,6 +19,7 @@ class CustomSelectWeightRow extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Card(
+        color: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadiusGeometry.circular(kDefBorderRaduis),
         ),

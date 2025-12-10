@@ -38,6 +38,7 @@ class SellerItem extends StatelessWidget {
         : 5.sp;
 
     return Card(
+      color: Colors.white,
       elevation: 3,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(kDefBorderRaduis),

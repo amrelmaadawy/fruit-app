@@ -76,13 +76,13 @@ class _SplashViewState extends State<SplashView>
                     ? 200
                     : isPortrait
                     ? 90.w
-                    : 60.h; // في landscape خليها أقل
+                    : 40.h;
 
-                double bottomImageHeight = isWeb
-                    ? 250
-                    : isPortrait
-                    ? 30.h
-                    : 50.h; // تصغير الصورة تحت في Landscape
+                // double bottomImageHeight = isWeb
+                //     ? 250
+                //     : isPortrait
+                //     ? 30.h
+                //     : 10.h;
 
                 return Center(
                   child: Column(
@@ -111,22 +111,11 @@ class _SplashViewState extends State<SplashView>
                       FadeTransition(
                         opacity: _fadeInAnimation,
                         child: SizedBox(
-                          width: double.infinity,
-                          height: bottomImageHeight,
-                          child: Image.asset(
-                            'assets/images/343434 1.png',
-                            fit: BoxFit.fitWidth,
-                          ),
+                          width: isPortrait ? double.infinity : 40.w,
+                          height: 32.h,
+                          child: Image.asset('assets/images/343434 1.png'),
                         ),
                       ),
-
-                      // SizedBox(
-                      //   height: isWeb
-                      //       ? 40
-                      //       : isPortrait
-                      //       ? 10.h
-                      //       : 10.h,
-                      // ),
                     ],
                   ),
                 );

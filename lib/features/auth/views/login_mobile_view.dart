@@ -8,6 +8,7 @@ import 'package:fruit_app/core/utils/app_size.dart';
 import 'package:fruit_app/features/auth/views/forget_password_mobile_view.dart';
 import 'package:fruit_app/features/auth/views/sign_up_mobile_view.dart';
 import 'package:fruit_app/features/layout/views/layout_view.dart';
+
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
 
@@ -27,10 +28,12 @@ class _LoginViewState extends State<LoginView> {
         builder: (context, constraints) {
           bool isWeb = constraints.maxWidth >= 1024;
           bool isLandscape = constraints.maxWidth > constraints.maxHeight;
-          
-          double containerWidth = isWeb 
-              ? 600 
-              : (isLandscape ? constraints.maxWidth * 0.7 : constraints.maxWidth * 0.9);
+
+          double containerWidth = isWeb
+              ? 600
+              : (isLandscape
+                    ? constraints.maxWidth * 0.7
+                    : constraints.maxWidth * 0.9);
 
           return Center(
             child: SizedBox(
@@ -38,7 +41,9 @@ class _LoginViewState extends State<LoginView> {
               child: SingleChildScrollView(
                 child: Padding(
                   padding: EdgeInsets.symmetric(
-                    horizontal: isWeb ? 32 : (isLandscape ? 40 : kDefAuthPadding),
+                    horizontal: isWeb
+                        ? 32
+                        : (isLandscape ? 40 : kDefAuthPadding),
                     vertical: isWeb ? 32 : (isLandscape ? 20 : kDefAuthPadding),
                   ),
                   child: Column(
@@ -51,9 +56,9 @@ class _LoginViewState extends State<LoginView> {
                           fontSize: isWeb ? 42 : (isLandscape ? 32 : 10.sp),
                         ),
                       ),
-                      
+
                       SizedBox(height: isLandscape ? 8 : (isWeb ? 10 : 2.h)),
-                      
+
                       Text(
                         'Login to Wikala',
                         style: TextStyle(
@@ -63,7 +68,7 @@ class _LoginViewState extends State<LoginView> {
                       ),
 
                       SizedBox(height: isLandscape ? 15 : (isWeb ? 10 : 2.h)),
-                      
+
                       CustomTextFormField(
                         controller: phoneController,
                         text: 'Phone Number With Whatsapp *',
@@ -73,9 +78,9 @@ class _LoginViewState extends State<LoginView> {
                         },
                         keyboardType: TextInputType.number,
                       ),
-                      
+
                       SizedBox(height: isLandscape ? 10 : (isWeb ? 10 : 2.h)),
-                      
+
                       CustomTextFormField(
                         obscureText: true,
                         controller: passwordController,
@@ -86,14 +91,16 @@ class _LoginViewState extends State<LoginView> {
                         },
                         keyboardType: TextInputType.text,
                       ),
-                      
+
                       SizedBox(height: isLandscape ? 15 : (isWeb ? 10 : 2.h)),
-                      
+
                       CustomElevatedButton(
                         onPressed: () {
                           Navigator.pushReplacement(
                             context,
-                            MaterialPageRoute(builder: (context) => LayoutView()),
+                            MaterialPageRoute(
+                              builder: (context) => LayoutView(),
+                            ),
                           );
                         },
                         text: 'Sign Up',
@@ -106,13 +113,17 @@ class _LoginViewState extends State<LoginView> {
                           destination: ForgetPasswordView(),
                         ),
                       ),
-                      
+
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
                             'Don\'t have an account? |',
-                            style: TextStyle(fontSize: isWeb ? 22 : (isLandscape ? 16 : 4.sp)),
+                            style: TextStyle(
+                              fontSize: isWeb
+                                  ? 22
+                                  : (isLandscape ? 16 : 3.8.sp),
+                            ),
                           ),
                           CustomTextButton(
                             text: 'Sign Up',
