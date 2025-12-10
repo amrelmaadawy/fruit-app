@@ -24,9 +24,10 @@ class _SplashViewState extends State<SplashView>
       vsync: this,
     )..forward();
 
-    _fadeInAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeIn),
-    );
+    _fadeInAnimation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeIn));
 
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(context, _createRoute());
@@ -74,20 +75,26 @@ class _SplashViewState extends State<SplashView>
                 double logoSize = isWeb
                     ? 200
                     : isPortrait
-                        ? 90.w
-                        : 60.h; // في landscape خليها أقل
+                    ? 90.w
+                    : 60.h; // في landscape خليها أقل
 
                 double bottomImageHeight = isWeb
                     ? 250
                     : isPortrait
-                        ? 100.h
-                        : 60.h; // تصغير الصورة تحت في Landscape
+                    ? 30.h
+                    : 50.h; // تصغير الصورة تحت في Landscape
 
                 return Center(
                   child: Column(
                     children: [
-                      SizedBox(height: isWeb ? 40 : isPortrait ? 20.h : 10.h),
-                  
+                      SizedBox(
+                        height: isWeb
+                            ? 40
+                            : isPortrait
+                            ? 20.h
+                            : 10.h,
+                      ),
+
                       /// ----------------- Logo -----------------
                       FadeTransition(
                         opacity: _fadeInAnimation,
@@ -98,21 +105,28 @@ class _SplashViewState extends State<SplashView>
                           fit: BoxFit.contain,
                         ),
                       ),
-                  
+
                       const Spacer(),
-                  
+
                       FadeTransition(
                         opacity: _fadeInAnimation,
                         child: SizedBox(
+                          width: double.infinity,
                           height: bottomImageHeight,
                           child: Image.asset(
                             'assets/images/343434 1.png',
-                            fit: BoxFit.contain,
+                            fit: BoxFit.fitWidth,
                           ),
                         ),
                       ),
-                  
-                      SizedBox(height: isWeb ? 40 : isPortrait ? 10.h : 10.h),
+
+                      // SizedBox(
+                      //   height: isWeb
+                      //       ? 40
+                      //       : isPortrait
+                      //       ? 10.h
+                      //       : 10.h,
+                      // ),
                     ],
                   ),
                 );

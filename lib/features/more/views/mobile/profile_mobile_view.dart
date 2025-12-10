@@ -5,8 +5,8 @@ import 'package:fruit_app/core/responsive/size_config.dart';
 import 'package:fruit_app/core/utils/app_colors.dart';
 import 'package:fruit_app/core/utils/app_size.dart';
 
-class ProfileView extends StatelessWidget {
-  const ProfileView({super.key});
+class ProfileMobileView extends StatelessWidget {
+  const ProfileMobileView({super.key});
 
   @override
   Widget build(BuildContext context) {

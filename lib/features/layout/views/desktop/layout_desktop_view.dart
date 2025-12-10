@@ -3,8 +3,8 @@ import 'package:fruit_app/core/utils/app_colors.dart';
 import 'package:fruit_app/features/basket/views/basket_view.dart';
 import 'package:fruit_app/features/favorite/views/favorite_view.dart';
 import 'package:fruit_app/features/home/views/home_view.dart';
-import 'package:fruit_app/features/more/views/more_view.dart';
 import 'package:flutter/material.dart';
+import 'package:fruit_app/features/more/views/more_view.dart';
 import 'package:fruit_app/features/orders/views/order_view.dart';
 
 class LayoutDesktopView extends StatefulWidget {

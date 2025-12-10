@@ -15,6 +15,9 @@ class CustomProfileButton extends StatelessWidget {
   final void Function()? ontap;
   @override
   Widget build(BuildContext context) {
+    bool isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
+
     return GestureDetector(
       onTap: ontap,
       child: Card(
@@ -23,11 +26,15 @@ class CustomProfileButton extends StatelessWidget {
           padding: const EdgeInsets.all(kDefItemsPadding),
           child: Row(
             children: [
-              Icon(icon, size: 6.sp),
-              SizedBox(width: 3.w),
-              Text(text, style: TextStyle(fontSize: 4.sp)),
+              Icon(icon, size: isLandscape ? 3.sp : 6.sp),
+              SizedBox(width: isLandscape ? 1.w : 3.w),
+              Text(text, style: TextStyle(fontSize: isLandscape ? 2.sp : 4.sp)),
               Spacer(),
-              Icon(Icons.arrow_forward_ios, size: 5.5.sp, color: kBorderColor),
+              Icon(
+                Icons.arrow_forward_ios,
+                size: isLandscape ? 3.sp : 5.5.sp,
+                color: kBorderColor,
+              ),
             ],
           ),
         ),
