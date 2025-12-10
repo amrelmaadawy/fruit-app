@@ -3,7 +3,6 @@ import 'package:fruit_app/core/components/custom_elevated_button.dart';
 import 'package:fruit_app/core/responsive/size_config.dart';
 import 'package:fruit_app/core/utils/app_colors.dart';
 import 'package:fruit_app/features/more/profile_view.dart';
-import 'package:fruit_app/features/more/views/mobile/profile_mobile_view.dart';
 import 'package:fruit_app/features/more/views/support_view.dart';
 import 'package:fruit_app/features/more/views/terms_and_conditions_view.dart';
 import 'package:fruit_app/features/more/views/widgets/custom_profile_button.dart';
