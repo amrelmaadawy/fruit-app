@@ -9,6 +9,8 @@ class FilterCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+      bool isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
     return AlertDialog(
       backgroundColor: Colors.white,
       content: SizedBox(
@@ -23,7 +25,7 @@ class FilterCard extends StatelessWidget {
                 child: Text(
                   'Filter by',
                   style: TextStyle(
-                    fontSize: 4.sp,
+                    fontSize:isLandscape?2.sp: 4.sp,
                     fontWeight: FontWeight.bold,
                     color: kBlackColor,
                   ),
@@ -33,7 +35,7 @@ class FilterCard extends StatelessWidget {
                 children: [
                   Text(
                     'Delived To ',
-                    style: TextStyle(fontSize: 3.sp, color: kBorderColor),
+                    style: TextStyle(fontSize:isLandscape?1.5.sp: 3.sp, color: kBorderColor),
                   ),
                   Icon(Icons.delivery_dining_outlined, color: kPrimaryColor),
                 ],
@@ -41,18 +43,18 @@ class FilterCard extends StatelessWidget {
               CustomPopMenuButton(title: 'Select Area'),
               Text(
                 'Offers',
-                style: TextStyle(fontSize: 3.sp, color: kBorderColor),
+                style: TextStyle(fontSize:isLandscape?1.5.sp: 3.sp, color: kBorderColor),
               ),
               Text(
                 'Free Delivery',
-                style: TextStyle(fontSize: 3.sp, color: kBorderColor),
+                style: TextStyle(fontSize:isLandscape?1.5.sp: 3.sp, color: kBorderColor),
               ),
               CustomElevatedButton(onPressed: () {}, text: 'Apply Filter'),
               Align(
                 alignment: AlignmentGeometry.center,
                 child: TextButton(
                   onPressed: () {},
-                  child: Text('Cancel', style: TextStyle(color: kBorderColor,fontSize: 2.sp)),
+                  child: Text('Cancel', style: TextStyle(color: kBorderColor,fontSize:isLandscape?1.2: 2.sp)),
                 ),
               ),
             ],

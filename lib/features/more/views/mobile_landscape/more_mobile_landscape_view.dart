@@ -135,7 +135,7 @@ class _MoreMobileLandscapeViewState extends State<MoreMobileLandscapeView> {
                                           },
                                           child: Text(
                                             'English',
-                                            style: TextStyle(fontSize: 3.sp),
+                                            style: TextStyle(fontSize: 1.5.sp),
                                           ),
                                         ),
                                         RadioMenuButton<String>(
@@ -148,7 +148,7 @@ class _MoreMobileLandscapeViewState extends State<MoreMobileLandscapeView> {
                                           },
                                           child: Text(
                                             'العربيه',
-                                            style: TextStyle(fontSize: 3.sp),
+                                            style: TextStyle(fontSize: 1.5.sp),
                                           ),
                                         ),
                                       ],
@@ -171,7 +171,7 @@ class _MoreMobileLandscapeViewState extends State<MoreMobileLandscapeView> {
                                     child: Text(
                                       'Close',
                                       style: TextStyle(
-                                        fontSize: 4.sp,
+                                        fontSize: 2.sp,
                                         color: kBorderColor,
                                       ),
                                     ),

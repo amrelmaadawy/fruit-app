@@ -35,41 +35,46 @@ class _LayoutMobileViewState extends State<LayoutMobileView> {
           child: IndexedStack(index: _currentIndex, children: _screens),
         ),
       ),
-      bottomNavigationBar: SizedBox(
-        height: 10.h,
-        child: SalomonBottomBar(
-
-          unselectedItemColor: Colors.white,
-          backgroundColor: kPrimaryColor,
-          currentIndex: _currentIndex,
-          onTap: (i) => setState(() => _currentIndex = i),
-          items: [
-            SalomonBottomBarItem(
-              icon: Icon(Icons.home_outlined, size: 5.sp),
-              title: Text('Home', style: TextStyle(fontSize: 3.sp)),
-              selectedColor: Colors.white,
-            ),
-            SalomonBottomBarItem(
-              icon: Icon(Icons.assignment_outlined, size: 5.sp),
-              title: Text('Orders', style: TextStyle(fontSize: 3.sp)),
-              selectedColor: Colors.white,
-            ),
-            SalomonBottomBarItem(
-              icon: Icon(Icons.shopping_basket_outlined, size: 5.sp),
-              title: Text('Basket', style: TextStyle(fontSize: 3.sp)),
-              selectedColor: Colors.white,
-            ),
-            SalomonBottomBarItem(
-              icon: Icon(Icons.favorite_border_outlined, size: 5.sp),
-              title: Text('Favorite', style: TextStyle(fontSize: 3.sp)),
-              selectedColor: Colors.white,
-            ),
-            SalomonBottomBarItem(
-              icon: Icon(Icons.menu, size: 5.sp),
-              title: Text('More', style: TextStyle(fontSize: 3.sp)),
-              selectedColor: Colors.white,
-            ),
-          ],
+      bottomNavigationBar: ClipRRect(
+        borderRadius: BorderRadiusGeometry.only(
+          topLeft: Radius.circular(kDefBorderRaduis),
+          topRight: Radius.circular(kDefBorderRaduis),
+        ),
+        child: SizedBox(
+          height: 10.h,
+          child: SalomonBottomBar(  
+            unselectedItemColor: Colors.white,
+            backgroundColor: kPrimaryColor,
+            currentIndex: _currentIndex,
+            onTap: (i) => setState(() => _currentIndex = i),
+            items: [
+              SalomonBottomBarItem(
+                icon: Icon(Icons.home_outlined, size: 5.sp),
+                title: Text('Home', style: TextStyle(fontSize: 3.sp)),
+                selectedColor: Colors.white,
+              ),
+              SalomonBottomBarItem(
+                icon: Icon(Icons.assignment_outlined, size: 5.sp),
+                title: Text('Orders', style: TextStyle(fontSize: 3.sp)),
+                selectedColor: Colors.white,
+              ),
+              SalomonBottomBarItem(
+                icon: Icon(Icons.shopping_basket_outlined, size: 5.sp),
+                title: Text('Basket', style: TextStyle(fontSize: 3.sp)),
+                selectedColor: Colors.white,
+              ),
+              SalomonBottomBarItem(
+                icon: Icon(Icons.favorite_border_outlined, size: 5.sp),
+                title: Text('Favorite', style: TextStyle(fontSize: 3.sp)),
+                selectedColor: Colors.white,
+              ),
+              SalomonBottomBarItem(
+                icon: Icon(Icons.menu, size: 5.sp),
+                title: Text('More', style: TextStyle(fontSize: 3.sp)),
+                selectedColor: Colors.white,
+              ),
+            ],
+          ),
         ),
       ),
     );

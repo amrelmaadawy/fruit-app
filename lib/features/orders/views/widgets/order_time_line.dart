@@ -89,7 +89,6 @@ class OrderTimelineWidget extends StatelessWidget {
                       )
                     : null,
               ),
-              // Line
               if (!isLast)
                 Expanded(
                   child: Container(

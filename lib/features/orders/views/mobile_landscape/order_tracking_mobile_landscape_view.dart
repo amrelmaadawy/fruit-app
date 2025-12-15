@@ -79,7 +79,7 @@ class OrderTrackingMobileLandscapeView extends StatelessWidget {
                                   'Cancel Order',
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 3.sp,
+                                    fontSize: 1.5.sp,
                                   ),
                                 ),
                               ),
@@ -92,14 +92,14 @@ class OrderTrackingMobileLandscapeView extends StatelessWidget {
                                     style: TextStyle(
                                       color: kSubTextColor,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 2.sp,
+                                      fontSize: 1.sp,
                                     ),
                                   ),
-                                  SizedBox(height: 5.h),
+                                  SizedBox(height: 1.h),
                                   CustomPopMenuButton(
                                     title: 'please select reason',
                                   ),
-                                  SizedBox(height: 5.h),
+                                  SizedBox(height: 1.h),
                                   CustomTextFormField(
                                     controller: noteController,
                                     text: 'Note',
@@ -117,7 +117,7 @@ class OrderTrackingMobileLandscapeView extends StatelessWidget {
                                   onPressed: () {},
                                   text: 'Confirm Cancelation',
                                 ),
-                                SizedBox(height: 5.h),
+                                SizedBox(height: 2.h),
                                 Center(
                                   child: TextButton(
                                     onPressed: () {
@@ -127,7 +127,7 @@ class OrderTrackingMobileLandscapeView extends StatelessWidget {
                                       'Close',
                                       style: TextStyle(
                                         color: kBorderColor,
-                                        fontSize: 2.sp,
+                                        fontSize: 1.sp,
                                       ),
                                     ),
                                   ),
